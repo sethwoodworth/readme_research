@@ -1,0 +1,778 @@
+[u'ActiveRecord Index Assist'],http://github.com/eladmeidar/rails_indexes
+[u'ActiveRecord Index Assist'],http://github.com/samdanavia/ambitious_query_indexer
+[u'ActiveRecord Enumerations'],http://github.com/jeffp/enumerated_attribute
+[u'ActiveRecord Enumerations'],http://github.com/pluginaweek/enumerate_by
+[u'ActiveRecord Enumerations'],http://github.com/cassiomarques/enumerate_it
+[u'ActiveRecord Enumerations'],http://github.com/caryl/simple_enum
+[u'ActiveRecord Default Values'],http://github.com/FooBarWidget/default_value_for
+[u'ActiveRecord Default Values'],http://github.com/aussiegeek/active_record_defaults
+[u'ActiveRecord Nesting'],http://github.com/collectiveidea/awesome_nested_set
+[u'ActiveRecord Nesting'],http://github.com/stefankroes/ancestry
+[u'ActiveRecord Nesting'],http://github.com/rails/acts_as_tree
+[u'ActiveRecord Nesting'],http://github.com/chris/better_nested_set
+[u'ActiveRecord Nesting'],http://github.com/rails/acts_as_nested_set
+[u'ActiveRecord Sharding'],http://github.com/kovyrin/db-charmer
+[u'ActiveRecord Sharding'],http://github.com/fiveruns/data_fabric
+[u'ActiveRecord Sharding'],http://github.com/tchandy/octopus
+[u'ActiveRecord Sharding'],http://github.com/mixonic/ShardTheLove
+[u'ActiveRecord Soft Delete'],http://github.com/technoweenie/acts_as_paranoid
+[u'ActiveRecord Soft Delete'],http://github.com/winton/acts_as_archive
+[u'ActiveRecord Soft Delete'],http://github.com/ajh/acts_as_soft_deletable
+[u'ActiveRecord Soft Delete'],http://github.com/JackDanger/permanent_records
+[u'ActiveRecord Named Scopes'],http://github.com/binarylogic/searchlogic
+[u'ActiveRecord Named Scopes'],http://github.com/thoughtbot/pacecar
+[u'ActiveRecord Named Scopes'],http://github.com/yfactorial/utility_scopes
+[u'ActiveRecord Named Scopes'],http://github.com/technoweenie/can_search
+[u'ActiveRecord Named Scopes'],http://github.com/samleb/sexy_scopes
+[u'ActiveRecord Named Scopes'],http://github.com/ryanb/scope-builder
+[u'ActiveRecord Named Scopes'],http://github.com/internuity/quick_scopes
+[u'ActiveRecord Named Scopes'],http://github.com/defkode/trixy_scopes
+[u'ActiveRecord Value Cleanup'],http://github.com/mdeering/attribute_normalizer
+[u'ActiveRecord Value Cleanup'],http://github.com/rmm5t/strip_attributes
+[u'ActiveRecord Value Cleanup'],http://github.com/rubiety/nilify_blanks
+[u'ActiveRecord Value Cleanup'],http://github.com/laserlemon/scrubby
+[u'ActiveRecord Value Cleanup'],http://github.com/laserlemon/nullify
+[u'ActiveRecord Value Cleanup'],http://github.com/yob/strip_control_chars
+[u'ActiveRecord Versioning'],http://github.com/technoweenie/acts_as_versioned
+[u'ActiveRecord Versioning'],http://github.com/laserlemon/vestal_versions
+[u'ActiveRecord Versioning'],http://github.com/airblade/paper_trail
+[u'ActiveRecord Versioning'],http://github.com/rich/acts_as_revisable
+[u'ActiveRecord Versioning'],http://github.com/jmckible/version_fu
+[u'ActiveRecord Versioning'],http://github.com/mmower/simply_versioned
+[u'ActiveRecord Versioning'],http://github.com/TheBreeze/shadow
+[u'ActiveRecord Encryption'],http://github.com/shuber/attr_encrypted
+[u'ActiveRecord Encryption'],http://github.com/spikex/strongbox
+[u'ActiveRecord Encryption'],http://github.com/technoweenie/sentry
+[u'ActiveRecord Encryption'],http://github.com/jamesotron/Lockbox
+[u'ActiveRecord Encryption'],http://github.com/jmckible/lucifer
+[u'ActiveRecord Encryption'],http://github.com/pluginaweek/encrypted_strings
+[u'Asynchronous HTTP'],http://github.com/eventmachine/eventmachine
+[u'Asynchronous HTTP'],http://github.com/tarcieri/rev
+[u'Backups'],http://github.com/astrails/safe
+[u'Backups'],http://github.com/meskyanichi/backup
+[u'Backups'],http://github.com/gravelpup/backup_fu
+[u'Backups'],http://github.com/xaviershay/db2s3
+[u'Calendars'],http://github.com/elevation/event_calendar
+[u'Calendars'],http://github.com/topfunky/calendar_helper
+[u'Calendars'],http://github.com/clemens/later_dude
+[u'Calendars'],http://github.com/dmix/weekly_builder
+[u'Calendars'],http://github.com/fnando/has_calendar
+[u'ActiveRecord User Stamping'],http://github.com/collectiveidea/acts_as_audited
+[u'ActiveRecord User Stamping'],http://github.com/jnunemaker/user_stamp
+[u'ActiveRecord User Stamping'],http://github.com/delynn/userstamp
+[u'ActiveRecord User Stamping'],http://github.com/grosser/record_activities
+[u'ActiveRecord User Stamping'],http://github.com/darcy/acts_as_loggable
+[u'ActiveRecord User Stamping'],http://github.com/centro/tracktor
+[u'Continuous Testing'],http://github.com/mynyml/watchr
+[u'Continuous Testing'],http://github.com/seattlerb/zentest
+[u'Browser testing'],http://github.com/brynary/webrat
+[u'Browser testing'],http://github.com/jnicklas/capybara
+[u'Browser testing'],http://github.com/langalex/culerity
+[u'Browser testing'],http://github.com/bret/watir
+[u'Browser testing'],http://github.com/jarib/celerity
+[u'Browser testing'],http://github.com/ph7/selenium-client
+[u'Browser testing'],http://github.com/paytonrules/selenium-on-rails
+[u'Browser testing'],http://github.com/pivotal/polonium
+[u'CouchDB Clients'],http://github.com/couchrest/couchrest
+[u'CouchDB Clients'],http://github.com/langalex/couch_potato
+[u'CouchDB Clients'],http://github.com/georgepalmer/couch_foo
+[u'CouchDB Clients'],http://github.com/hpoydar/couchrest-rails
+[u'CouchDB Clients'],http://github.com/paulcarey/relaxdb
+[u'CouchDB Clients'],http://github.com/paulca/stuffing
+[u'CouchDB Clients'],http://github.com/jo/quilt
+[u'CRM Apps'],http://github.com/michaeldv/fat_free_crm
+[u'CRM Apps'],http://github.com/bitzesty/mongo_crm
+[u'CRM Apps'],http://github.com/djcp/cohort
+[u'CRM Apps'],http://github.com/thomasn/forgetmenot
+[u'CSS Frameworks'],http://github.com/joshuaclayton/blueprint-css
+[u'CSS Frameworks'],http://github.com/chriseppstein/compass
+[u'CSS Frameworks'],http://github.com/stubbornella/oocss
+[u'CSS Frameworks'],http://github.com/bauhouse/fluid960gs
+[u'CSS Frameworks'],http://github.com/jpsilvashy/fluid-grid-system
+[u'CSS Frameworks'],http://github.com/azendal/elastic
+[u'CSS Frameworks'],http://github.com/thierryk/ez-css
+[u'Daemonizing'],http://github.com/kennethkalmer/daemon-kit
+[u'Daemonizing'],http://github.com/dougal/daemon_generator
+[u'Daemonizing'],http://github.com/luckythetourist/robustthread
+[u'Daemonizing'],http://github.com/bryanl/simple-daemon
+[u'Daemonizing'],http://github.com/billymeltdown/looper
+[u'Daemonizing'],http://github.com/peritor/backdrop
+[u'CSS with Ruby'],http://github.com/cloudhead/less
+[u'CSS with Ruby'],http://github.com/aanand/deadweight
+[u'CSS with Ruby'],http://github.com/airblade/css_dryer
+[u'CSS with Ruby'],http://github.com/hcatlin/sass
+[u'CSS with Ruby'],http://github.com/ionfish/stylish
+[u'Dependency Management'],http://github.com/carlhuda/bundler
+[u'Dependency Management'],http://github.com/evilchelu/braid
+[u'Dependency Management'],http://github.com/francois/piston
+[u'Dependency Management'],http://github.com/patmaddox/giternal
+[u'Dependency Management'],http://github.com/jbarnette/isolate
+[u'Dependency Management'],http://github.com/37signals/cached_externals
+[u'Dependency Management'],http://github.com/winton/externals
+[u'Dependency Management'],http://github.com/azimux/externals
+[u'Dependency Management'],http://github.com/halorgium/gem_resolver
+[u'Dependency Management'],http://github.com/terrbear/bling
+[u'Daemon Management'],http://github.com/FooBarWidget/daemon_controller
+[u'Daemon Management'],http://github.com/alexvollmer/daemon-spawn
+[u'Deployment Automation'],http://github.com/railsmachine/moonshine
+[u'Deployment Automation'],http://github.com/capistrano/capistrano
+[u'Deployment Automation'],http://github.com/dcrec1/inploy
+[u'Deployment Automation'],http://github.com/wr0ngway/rubber
+[u'Deployment Automation'],http://github.com/seattlerb/vlad
+[u'Deployment Automation'],http://github.com/saizai/superdeploy
+[u'Deployment Automation'],http://github.com/remi/phd
+[u'Code Metrics'],http://github.com/jscruggs/metric_fu
+[u'Code Metrics'],http://github.com/flyerhzm/rails_best_practices
+[u'Code Metrics'],http://github.com/relevance/rcov
+[u'Code Metrics'],http://github.com/kevinrutherford/reek
+[u'Code Metrics'],http://github.com/colszowka/simplecov
+[u'Code Metrics'],http://github.com/martinjandrews/roodi
+[u'Code Metrics'],http://github.com/thoughtbot/report_card
+[u'Code Metrics'],http://github.com/commondream/rcov_plugin
+[u'Code Metrics'],http://github.com/markbates/cover_me
+[u'Code Metrics'],http://github.com/seattlerb/flog
+[u'Code Metrics'],http://github.com/seattlerb/flay
+[u'Code Metrics'],http://github.com/kevinrutherford/crap4r
+[u'ActiveRecord Sortables'],http://github.com/rails/acts_as_list
+[u'ActiveRecord Sortables'],http://github.com/shuber/sortable
+[u'Distributed Testing'],http://github.com/grosser/parallel_tests
+[u'Distributed Testing'],http://github.com/timcharper/spork
+[u'Distributed Testing'],http://github.com/ngauthier/hydra
+[u'Distributed Testing'],http://github.com/brynary/testjour
+[u'Distributed Testing'],http://github.com/sandro/specjour
+[u'Distributed Testing'],http://github.com/lifo/tickle
+[u'Distributed Testing'],http://github.com/qxjit/deep-test
+[u'Distributed Testing'],http://github.com/aslakhellesoy/rspec-distributed
+[u'Documentation Tools'],http://github.com/lsegal/yard
+[u'Documentation Tools'],http://github.com/voloko/sdoc
+[u'Documentation Tools'],http://github.com/mislav/hanna
+[u'Documentation Tools'],http://github.com/breakpointer/ajax-rdoc
+[u'Documentation Tools'],http://github.com/sunaku/erbook
+[u'Documentation Tools'],http://github.com/rtomayko/ron
+[u'E-Commerce'],http://github.com/railsdog/spree
+[u'E-Commerce'],http://github.com/Shopify/active_merchant
+[u'E-Commerce'],http://github.com/binarylogic/shippinglogic
+[u'E-Commerce'],http://github.com/ept/invoicing
+[u'E-Commerce'],http://github.com/cainlevy/freemium
+[u'Forum Systems'],http://github.com/courtenay/altered_beast
+[u'Forum Systems'],http://github.com/radar/rboard
+[u'Continuous Integration'],http://github.com/defunkt/cijoe
+[u'Continuous Integration'],http://github.com/integrity/integrity
+[u'Continuous Integration'],http://github.com/thoughtworks/cruisecontrol.rb
+[u'Continuous Integration'],http://github.com/dcrec1/signal
+[u'Continuous Integration'],http://github.com/relevance/cap_gun
+[u'Continuous Integration'],http://github.com/cpjolicoeur/cerberus
+[u'Continuous Integration'],http://github.com/radar/construct
+[u'E-Mail Processing'],http://github.com/titanous/mailman
+[u'E-Mail Processing'],http://github.com/look/fetcher
+[u'E-Mail Processing'],http://github.com/siannopollo/mail_fetcher
+[u'Game libraries'],http://github.com/jacius/rubygame
+[u'Game libraries'],http://github.com/jlnr/gosu
+[u'Game libraries'],http://github.com/ippa/chingu
+[u'Game libraries'],http://github.com/shawn42/gamebox
+[u'Game libraries'],http://github.com/apillet/flonkerton
+[u'Game libraries'],http://github.com/LoganBarnett/jemini
+[u'E-Mail Sending'],http://github.com/mikel/mail
+[u'E-Mail Sending'],http://github.com/benprew/pony
+[u'E-Mail Sending'],http://github.com/mikel/tmail
+[u'E-Mail Sending'],http://github.com/zapnap/resque_mailer
+[u'E-Mail Sending'],http://github.com/fnando/mail_queue
+[u'E-Mail Sending'],http://github.com/cwninja/popthis
+[u'Graphing'],http://github.com/pullmonkey/open_flash_chart
+[u'Graphing'],http://github.com/topfunky/gruff
+[u'Graphing'],http://github.com/michelson/lazy_high_charts
+[u'Graphing'],http://github.com/Bantik/seer
+[u'Graphing'],http://github.com/adamwiggins/rifgraf
+[u'Graphing'],http://github.com/topfunky/sparklines
+[u'Graphing'],http://github.com/xaviershay/tufte-graph
+[u'Graphing'],http://github.com/delano/scruffy
+[u'Graphing'],http://github.com/rdp/ruby_gnuplot
+[u'Graphing'],http://github.com/rudionrails/google_charts
+[u'Gem Doc Viewers'],http://github.com/manalang/bdoc
+[u'Gem Doc Viewers'],http://github.com/jnewland/sinatra-rubygems
+[u'Gem Doc Viewers'],http://github.com/quirkey/gembox
+[u'Gem Doc Viewers'],http://github.com/imownbey/docbox
+[u'Geocoding &amp; Maps'],http://github.com/andre/geokit-gem
+[u'Geocoding &amp; Maps'],http://github.com/andre/geokit-rails
+[u'Geocoding &amp; Maps'],http://github.com/collectiveidea/graticule
+[u'Geocoding &amp; Maps'],http://github.com/collectiveidea/acts_as_geocodable
+[u'Geocoding &amp; Maps'],http://github.com/alexreisner/geocoder
+[u'Geocoding &amp; Maps'],http://github.com/yawningman/eschaton
+[u'Geocoding &amp; Maps'],http://github.com/parolkar/geo_mere_laal
+[u'Geocoding &amp; Maps'],http://github.com/queso/ym4r-gm
+[u'Geocoding &amp; Maps'],http://github.com/nofxx/postgis_adapter
+[u'Geocoding &amp; Maps'],http://github.com/thhermansen/google_static_maps_helper
+[u'Gem Creation'],http://github.com/technicalpickles/jeweler
+[u'Gem Creation'],http://github.com/drnic/newgem
+[u'Gem Creation'],http://github.com/TwP/bones
+[u'Gem Creation'],http://github.com/fauna/echoe
+[u'Gem Creation'],http://github.com/seattlerb/hoe
+[u'Gem Creation'],http://github.com/svenfuchs/gem-release
+[u'Gem Creation'],http://github.com/sunaku/inochi
+[u'Gem Creation'],http://github.com/reagent/simple-gem
+[u'Image Processing'],http://github.com/probablycorey/mini_magick
+[u'Image Processing'],http://github.com/seattlerb/image_science
+[u'Image Processing'],http://github.com/banister/devil
+[u'Image Processing'],http://github.com/fabien/im_magick
+[u'HTTP clients'],http://github.com/jnunemaker/httparty
+[u'HTTP clients'],http://github.com/pauldix/typhoeus
+[u'HTTP clients'],http://github.com/tenderlove/mechanize
+[u'HTTP clients'],http://github.com/igrigorik/em-http-request
+[u'HTTP clients'],http://github.com/archiloque/rest-client
+[u'HTTP clients'],http://github.com/taf2/curb
+[u'HTTP clients'],http://github.com/toland/patron
+[u'HTTP clients'],http://github.com/caelum/restfulie
+[u'HTTP clients'],http://github.com/maccman/nestful
+[u'HTTP clients'],http://github.com/mwunsch/weary
+[u'HTTP clients'],http://github.com/kaiwren/wrest
+[u'HTTP clients'],http://github.com/geemus/excon
+[u'I18n'],http://github.com/joshmh/globalize2
+[u'I18n'],http://github.com/svenfuchs/i18n
+[u'I18n'],http://github.com/raul/translate_routes
+[u'I18n'],http://github.com/ai/r18n
+[u'I18n'],http://github.com/grosser/fast_gettext
+[u'I18n'],http://github.com/kwi/i18n_routing
+[u'I18n'],http://github.com/dylanz/i18n_backend_database
+[u'I18n'],http://github.com/zigzag/ready_for_i18n
+[u'I18n'],http://github.com/janne/model_translations
+[u'I18n'],http://github.com/jo/puret
+[u'I18n'],http://github.com/balinterdi/i15r
+[u'I18n'],http://github.com/dmitry/has_translations
+[u'I18n'],http://github.com/kwi/i18n_auto_scoping
+[u'Exception Notification'],http://github.com/rails/exception_notification
+[u'Exception Notification'],http://github.com/thoughtbot/hoptoad_notifier
+[u'Exception Notification'],http://github.com/defunkt/exception_logger
+[u'Exception Notification'],http://github.com/contrast/exceptional
+[u'Exception Notification'],http://github.com/jdpace/errbit
+[u'Exception Notification'],http://github.com/atmos/rack_hoptoad
+[u'Exception Notification'],http://github.com/winton/lilypad
+[u'Exception Notification'],http://github.com/toolmantim/toadhopper
+[u'IRC Bots'],http://github.com/RISCfuture/autumn
+[u'IRC Bots'],http://github.com/ichverstehe/isaac
+[u'IRC Bots'],http://github.com/injekt/cinch
+[u'IRC Bots'],http://github.com/jsn/rbot
+[u'IRC Bots'],http://github.com/radar/summer
+[u'IRC Bots'],http://github.com/craigw/sprinkles
+[u'JavaScript Testing'],http://github.com/relevance/blue-ridge
+[u'JavaScript Testing'],http://github.com/pivotal/jasmine
+[u'JavaScript Testing'],http://github.com/jeresig/testswarm
+[u'JavaScript Testing'],http://github.com/visionmedia/jspec
+[u'JavaScript Testing'],http://github.com/nathansobo/screw-unit
+[u'JavaScript Testing'],http://github.com/jodosha/hanoi
+[u'JavaScript Testing'],http://github.com/alexyoung/riotjs
+[u'JavaScript Testing'],http://github.com/pivotal/screw-unit-server
+[u'JavaScript Frameworks'],http://github.com/jquery/jquery
+[u'JavaScript Frameworks'],http://github.com/madrobby/scriptaculous
+[u'JavaScript Frameworks'],http://github.com/sstephenson/prototype
+[u'JavaScript Frameworks'],http://github.com/mootools/mootools-core
+[u'JavaScript Frameworks'],http://github.com/yui/yui3
+[u'JavaScript Frameworks'],http://github.com/madrobby/scripty2
+[u'JavaScript Frameworks'],http://github.com/yui/yui2
+[u'JavaScript Frameworks'],http://github.com/rightjs/rightjs-core
+[u'HTML parsing'],http://github.com/tenderlove/nokogiri
+[u'HTML parsing'],http://github.com/hpricot/hpricot
+[u'HTML parsing'],http://github.com/scrubber/scrubyt
+[u'HTML parsing'],http://github.com/assaf/scrapi
+[u'HTML parsing'],http://github.com/cfis/libxml-ruby
+[u'Markup processors'],http://github.com/rtomayko/rdiscount
+[u'Markup processors'],http://github.com/jgarber/redcloth
+[u'Markup processors'],http://github.com/github/markup
+[u'Markup processors'],http://github.com/gettalong/kramdown
+[u'Markup processors'],http://github.com/mislav/bluecloth
+[u'Markup processors'],http://github.com/rtomayko/rpeg-markdown
+[u'Markup processors'],http://github.com/flavorjones/mcbean
+[u'Markup processors'],http://github.com/remi/maruku
+[u'Markup processors'],http://github.com/colszowka/stupid_formatter
+[u'irb Tools'],http://github.com/ryanb/dotfiles
+[u'irb Tools'],http://github.com/michaeldv/awesome_print
+[u'irb Tools'],http://github.com/cldwalker/hirb
+[u'irb Tools'],http://github.com/sickill/racksh
+[u'irb Tools'],http://github.com/oggy/looksee
+[u'irb Tools'],http://github.com/cldwalker/bond
+[u'irb Tools'],http://github.com/gilesbowkett/utility-belt
+[u'irb Tools'],http://github.com/postmodern/sketches
+[u'irb Tools'],http://github.com/cldwalker/alias
+[u'irb Tools'],http://github.com/davidrichards/sirb
+[u'Content Management'],http://github.com/radiant/radiant
+[u'Content Management'],http://github.com/resolve/refinerycms
+[u'Content Management'],http://github.com/browsermedia/browsercms
+[u'Content Management'],http://github.com/fdv/typo
+[u'Content Management'],http://github.com/svenfuchs/adva_cms
+[u'Content Management'],http://github.com/gma/nesta
+[u'Content Management'],http://github.com/desaperados/seed
+[u'Content Management'],http://github.com/trevorturk/static
+[u'Content Management'],http://github.com/zena/zena
+[u'Content Management'],http://github.com/DigitPaint/skyline
+[u'Content Management'],http://github.com/knewter/ansuz
+[u'Content Management'],http://github.com/atd/station
+[u'Content Management'],http://github.com/thinkdry/blank-application
+[u'Content Management'],http://github.com/spoiledmilk/casein
+[u'Content Management'],http://github.com/gnuine/ubiquo_core
+[u'Content Management'],http://github.com/railfrog/railfrog
+[u'Mocking Web Requests'],http://github.com/chrisk/fakeweb
+[u'Mocking Web Requests'],http://github.com/bblimke/webmock
+[u'Mocking Web Requests'],http://github.com/wycats/artifice
+[u'Mocking Web Requests'],http://github.com/myronmarston/vcr
+[u'Mocking Web Requests'],http://github.com/appendto/jquery-mockjax
+[u'Mocking Web Requests'],http://github.com/chrisyoung/netrecorder
+[u'Mocking Web Requests'],http://github.com/jsmestad/stale_fish
+[u'Music &amp; MIDI'],http://github.com/gilesbowkett/archaeopteryx
+[u'Music &amp; MIDI'],http://github.com/bleything/midiator
+[u'Music &amp; MIDI'],http://github.com/rubiety/jazztoolbox
+[u'Music &amp; MIDI'],http://github.com/Gabrielg1976/ruby_music_projects
+[u'Music &amp; MIDI'],http://github.com/jimm/midilib
+[u'Music &amp; MIDI'],http://github.com/adamjmurray/cosy
+[u'Music &amp; MIDI'],http://github.com/jvoorhis/music_player
+[u'LDAP'],http://github.com/binarylogic/authlogic_ldap
+[u'LDAP'],http://github.com/cschiewek/devise_ldap_authenticatable
+[u'LDAP'],http://github.com/innovationfactory/ruby-net-ldap
+[u'LDAP'],http://github.com/thoughtbot/ldap-activerecord-gateway
+[u'LDAP'],http://github.com/jeremyevans/simple_ldap_authenticator
+[u'LDAP'],http://github.com/ncdc/ruby-activeldap
+[u'Packaging to Executables'],http://github.com/larsch/ocra
+[u'Packaging to Executables'],http://github.com/copiousfreetime/crate
+[u'Packaging to Executables'],http://github.com/ryanbooker/rubyscript2exe
+[u'MongoDB Clients'],http://github.com/jnunemaker/mongomapper
+[u'MongoDB Clients'],http://github.com/mongoid/mongoid
+[u'MongoDB Clients'],http://github.com/benmyles/mongomatic
+[u'Mocking'],http://github.com/btakita/rr
+[u'Mocking'],http://github.com/floehopper/mocha
+[u'Mocking'],http://github.com/jimweirich/flexmock
+[u'Mocking'],http://github.com/jm/stump
+[u'Mocking'],http://github.com/ngty/cross-stub
+[u'Mocking'],http://github.com/chuyeow/facon
+[u'Presentation Software'],http://github.com/schacon/showoff
+[u'Presentation Software'],http://github.com/nakajima/slidedown
+[u'Presentation Software'],http://github.com/davist11/jQuery-Presentation
+[u'Presentation Software'],http://github.com/geraldb/s6
+[u'Presentation Software'],http://github.com/geraldb/slideshow
+[u'JavaScript Tools'],http://github.com/sstephenson/sprockets
+[u'JavaScript Tools'],http://github.com/cjohansen/juicer
+[u'JavaScript Tools'],http://github.com/collin/jabs
+[u'JavaScript Tools'],http://github.com/MadRabbit/frontcompiler
+[u'JavaScript Tools'],http://github.com/jcoglan/packr
+[u'JavaScript Tools'],http://github.com/jcoglan/jake
+[u'JavaScript Tools'],http://github.com/NV/js-preprocessor
+[u'Prototype Replacements'],http://github.com/aaronchi/jrails
+[u'Prototype Replacements'],http://github.com/CodeOfficer/jquery-ui-rails-helpers
+[u'Prototype Replacements'],http://github.com/MadRabbit/right-rails
+[u'Prototype Replacements'],http://github.com/rubaidh/yui_on_rails
+[u'Packaging Systems'],http://github.com/defunkt/rip
+[u'Packaging Systems'],http://github.com/rtomayko/rpg
+[u'Packaging Systems'],http://github.com/mislav/coral
+[u'Packaging Systems'],http://github.com/josh/spoke
+[u'Packaging Systems'],http://github.com/Pistos/ruby-which
+[u'Rails Admin Interfaces'],http://github.com/activescaffold/active_scaffold
+[u'Rails Admin Interfaces'],http://github.com/fesplugas/typus
+[u'Rails Admin Interfaces'],http://github.com/neerajdotname/admin_data
+[u'Rails Admin Interfaces'],http://github.com/relevance/streamlined
+[u'Rails Admin Interfaces'],http://github.com/fhwang/admin_assistant
+[u'Rails Admin Interfaces'],http://github.com/quirkey/qadmin
+[u'Rails Admin Interfaces'],http://github.com/commondream/control_center
+[u'Rails Admin Interfaces'],http://github.com/Lipsiasoft/lipsiadmin
+[u'Queueing'],http://github.com/defunkt/resque
+[u'Queueing'],http://github.com/collectiveidea/delayed_job
+[u'Queueing'],http://github.com/purzelrakete/workling
+[u'Queueing'],http://github.com/tmm1/amqp
+[u'Queueing'],http://github.com/documentcloud/cloud-crowd
+[u'Queueing'],http://github.com/starling/starling
+[u'Queueing'],http://github.com/kr/beanstalkd
+[u'Queueing'],http://github.com/jeffkreeftmeijer/navvy
+[u'Queueing'],http://github.com/gnufied/backgroundrb
+[u'Queueing'],http://github.com/celldee/bunny
+[u'Queueing'],http://github.com/ncr/background-fu
+[u'Queueing'],http://github.com/wireframe/backgrounded
+[u'Queueing'],http://github.com/xing/beetle
+[u'Queueing'],http://github.com/jnstq/job_fu
+[u'Queueing'],http://github.com/seanohalpin/smqueue
+[u'Queueing'],http://github.com/ahoward/bj
+[u'Queueing'],http://github.com/barttenbrinke/worker_queue
+[u'Rails App Templates'],http://github.com/jm/rails-templates
+[u'Rails App Templates'],http://github.com/ffmike/BigOldRailsTemplate
+[u'Rails App Templates'],http://github.com/imajes/rails-template
+[u'Rails App Templates'],http://github.com/ejdraper/appsta
+[u'Rails App Templates'],http://github.com/thoughtbot/suspenders
+[u'Project Management'],http://github.com/edavis10/redmine
+[u'Project Management'],http://github.com/dim/retrospectiva
+[u'Project Management'],http://github.com/shingara/oupsnow
+[u'Project Management'],http://github.com/jgoodsen/radtrack-core
+[u'Project Management'],http://github.com/micho/teambox
+[u'Rails Asset Management'],http://github.com/sbecker/asset_packager
+[u'Rails Asset Management'],http://github.com/documentcloud/jammit
+[u'Rails Asset Management'],http://github.com/thumblemonks/smurf
+[u'Rails Asset Management'],http://github.com/timcharper/bundle-fu
+[u'Rails Asset Management'],http://github.com/voxxit/assemblage
+[u'Rails Asset Management'],http://github.com/yolk/rucksack
+[u'Rails Asset Management'],http://github.com/cornflakesuperstar/minified_cache
+[u'PDF Generation'],http://github.com/sandal/prawn
+[u'PDF Generation'],http://github.com/jdpace/PDFKit
+[u'PDF Generation'],http://github.com/thorny-sun/prawnto
+[u'PDF Generation'],http://github.com/antialize/wkhtmltopdf
+[u'PDF Generation'],http://github.com/mileszs/wicked_pdf
+[u'PDF Generation'],http://github.com/mbleigh/princely
+[u'PDF Generation'],http://github.com/fnando/kitabu
+[u'PDF Generation'],http://github.com/bruce/rtex
+[u'PDF Generation'],http://github.com/shairontoledo/rghost
+[u'Rails Captcha'],http://github.com/ambethia/recaptcha
+[u'Rails Captcha'],http://github.com/subwindow/negative-captcha
+[u'Rails Captcha'],http://github.com/rsanheim/brain_buster
+[u'Rails Captcha'],http://github.com/zendesk/captcha
+[u'Rails Captcha'],http://github.com/winton/captcha
+[u'Rails Captcha'],http://github.com/hiddenloop/acts_as_textcaptcha
+[u'Rails Captcha'],http://github.com/macarthy/simple-captcha-mirror
+[u'Rails Controller Abstractions'],http://github.com/josevalim/inherited_resources
+[u'Rails Controller Abstractions'],http://github.com/jamesgolick/resource_controller
+[u'Rails Controller Abstractions'],http://github.com/hcatlin/make_resourceful
+[u'Rails Controller Abstractions'],http://github.com/ianwhite/resources_controller
+[u'Rails Authentication'],http://github.com/binarylogic/authlogic
+[u'Rails Authentication'],http://github.com/plataformatec/devise
+[u'Rails Authentication'],http://github.com/technoweenie/restful-authentication
+[u'Rails Authentication'],http://github.com/thoughtbot/clearance
+[u'Rails Authentication'],http://github.com/grosser/rpx_now
+[u'Rails Authentication'],http://github.com/envylabs/BlueLightSpecial
+[u'Rails Authorization'],http://github.com/ryanb/cancan
+[u'Rails Authorization'],http://github.com/stffn/declarative_authorization
+[u'Rails Authorization'],http://github.com/be9/acl9
+[u'Rails Authorization'],http://github.com/timcharper/role_requirement
+[u'Rails Authorization'],http://github.com/stonean/lockdown
+[u'Rails Authorization'],http://github.com/jnunemaker/canable
+[u'Rails Authorization'],http://github.com/makandra/aegis
+[u'Rails Authorization'],http://github.com/mdarby/restful_acl
+[u'Rails Authorization'],http://github.com/10to1/roleify
+[u'Rails Authorization'],http://github.com/baldwindavid/padlock_authorization
+[u'Rails Authorization'],http://github.com/radar/can_touch_this
+[u'Rails Authorization'],http://github.com/noomii/walruz
+[u'Rails Fixture Replacement'],http://github.com/thoughtbot/factory_girl
+[u'Rails Fixture Replacement'],http://github.com/notahat/machinist
+[u'Rails Fixture Replacement'],http://github.com/aiwilliams/dataset
+[u'Rails Fixture Replacement'],http://github.com/flogic/object_daddy
+[u'Rails Fixture Replacement'],http://github.com/sinsiliux/Blueprints
+[u'Rails Fixture Replacement'],http://github.com/nakajima/fixjour
+[u'Rails Fixture Replacement'],http://github.com/smtlaissezfaire/fixturereplacement
+[u'Rails Form Builders'],http://github.com/justinfrench/formtastic
+[u'Rails Form Builders'],http://github.com/rubypond/semantic_form_builder
+[u'Rails Form Builders'],http://github.com/airblade/air_budd_form_builder
+[u'Rails Form Builders'],http://github.com/shift/accessible_form_builder
+[u'Microformats'],http://github.com/defunkt/mofo
+[u'Microformats'],http://github.com/mwunsch/prism
+[u'Microformats'],http://github.com/shadow11/microformats_helper
+[u'Microformats'],http://github.com/georgebrock/assert-microformats
+[u'Rails Comments'],http://github.com/jackdempsey/acts_as_commentable
+[u'Rails Comments'],http://github.com/norman/disqus
+[u'Rails Comments'],http://github.com/elight/acts_as_commentable_with_threading
+[u'Rails Comments'],http://github.com/grimen/is_reviewable
+[u'Rails Comments'],http://github.com/fnando/has_comments
+[u'Rails DB Bootstrapping'],http://github.com/mbleigh/seed-fu
+[u'Rails DB Bootstrapping'],http://github.com/ryanb/populator
+[u'Rails DB Bootstrapping'],http://github.com/sevenwire/bootstrapper
+[u'Rails DB Bootstrapping'],http://github.com/ffmike/db-populate
+[u'Rails DB Bootstrapping'],http://github.com/aduffeck/has_alter_ego
+[u'Rails Menu Builders'],http://github.com/andi/simple-navigation
+[u'Rails Menu Builders'],http://github.com/danielharan/semantic-menu
+[u'Rails Menu Builders'],http://github.com/mexpolk/simple_navigation
+[u'Rails Menu Builders'],http://github.com/jejacks0n/navigasmic
+[u'Rails Menu Builders'],http://github.com/bjeanes/tab_fu
+[u'Rails Menu Builders'],http://github.com/dpickett/tab_menu
+[u'Rails Menu Builders'],http://github.com/pluginaweek/menu_helper
+[u'Rails Menu Builders'],http://github.com/jamesarosen/xebec
+[u'Rails Menu Builders'],http://github.com/freestyler/dynamic_menu
+[u'Rails Menu Builders'],http://github.com/brewski/menu_components
+[u'Rails Menu Builders'],http://github.com/ngauthier/quick_menu
+[u'Rails Menu Builders'],http://github.com/mtoros/mega_menus
+[u'Rails Menu Builders'],http://github.com/laktek/simple-menu
+[u'Rails Menu Builders'],http://github.com/jsahlen/navigation_builder
+[u'Rails Menu Builders'],http://github.com/jondruse/tabbed_interface
+[u'Rails File Uploads'],http://github.com/thoughtbot/paperclip
+[u'Rails File Uploads'],http://github.com/technoweenie/attachment_fu
+[u'Rails File Uploads'],http://github.com/jnicklas/carrierwave
+[u'Rails File Uploads'],http://github.com/markevans/dragonfly
+[u'Rails File Uploads'],http://github.com/tobi/imagery
+[u'Rails File Uploads'],http://github.com/bbenezech/papermill
+[u'Rails Instrumentation'],http://github.com/josevalim/rails-footnotes
+[u'Rails Instrumentation'],http://github.com/newrelic/rpm
+[u'Rails Instrumentation'],http://github.com/engineyard/rails_metrics
+[u'Rails Instrumentation'],http://github.com/derailed/rackamole
+[u'Rails Instrumentation'],http://github.com/highgroove/scout-plugins
+[u'Rails Instrumentation'],http://github.com/ffmike/query_trace
+[u'Rails Pagination'],http://github.com/mislav/will_paginate
+[u'Rails Pagination'],http://github.com/mholling/paged_scopes
+[u'Rails Pagination'],http://github.com/radar/sort_by
+[u'Rails Pagination'],http://github.com/fnando/has_paginate
+[u'Rails Ratings'],http://github.com/edgarjs/ajaxful-rating
+[u'Rails Ratings'],http://github.com/azabaj/acts_as_rateable
+[u'Rails Ratings'],http://github.com/zachinglis/is_rateable
+[u'Rails Ratings'],http://github.com/jasherai/acts-as-rated
+[u'Rails Ratings'],http://github.com/fnando/has_ratings
+[u'Rails In-Place Editing'],http://github.com/rails/in_place_editing
+[u'Rails In-Place Editing'],http://github.com/janv/rest_in_place
+[u'Rails In-Place Editing'],http://github.com/rubymood/jintastic
+[u'Rails In-Place Editing'],http://github.com/rakuto/jrails_in_place_editing
+[u'Rails In-Place Editing'],http://github.com/nakajima/better-edit-in-place
+[u'Rails In-Place Editing'],http://github.com/simplificator/inplace
+[u'Rails In-Place Editing'],http://github.com/yizzreel/jquery_edit_in_place
+[u'Rails In-Place Editing'],http://github.com/flvorful/super_inplace_controls
+[u'Rails In-Place Editing'],http://github.com/redlinesoftware/in_place_editor
+[u'Rails In-Place Editing'],http://github.com/stepheneb/in_place_rich_editing
+[u'Rails Tagging'],http://github.com/mbleigh/acts-as-taggable-on
+[u'Rails Tagging'],http://github.com/jamesgolick/is_taggable
+[u'Rails Tagging'],http://github.com/mattetti/acts_as_taggable_on_steroids
+[u'Rails Tagging'],http://github.com/geemus/acts_as_taggable_redux
+[u'Rails Subdomains'],http://github.com/mbleigh/subdomain-fu
+[u'Rails Subdomains'],http://github.com/mholling/subdomain_routes
+[u'Rails Subdomains'],http://github.com/shuber/subdomain_account
+[u'Rails Subdomains'],http://github.com/penguincoder/acts_as_restricted_subdomain
+[u'Rails Subdomains'],http://github.com/jfernandez/submarine
+[u'Rails Subdomains'],http://github.com/centro/sso_what
+[u'Rails Search'],http://github.com/freelancing-god/thinking-sphinx
+[u'Rails Search'],http://github.com/outoftime/sunspot
+[u'Rails Search'],http://github.com/jkraemer/acts_as_ferret
+[u'Rails Search'],http://github.com/mwmitchell/rsolr
+[u'Rails Search'],http://github.com/dcrec1/acts_as_solr_reloaded
+[u'Rails Search'],http://github.com/dbalmain/ferret
+[u'Rails Search'],http://github.com/ryanb/xapit
+[u'Rails Search'],http://github.com/tenderlove/texticle
+[u'Rails Search'],http://github.com/railsfreaks/acts_as_solr
+[u'Rails Search'],http://github.com/wvanbergen/scoped_search
+[u'Rails Search'],http://github.com/avvo/delsolr
+[u'Rails Search'],http://github.com/matthewrudy/solr_query
+[u'Rails Search'],http://github.com/wonsys/acts_as_fulltextable
+[u'Recurring Events'],http://github.com/seejohnrun/ice_cube
+[u'Recurring Events'],http://github.com/fnando/recurrence
+[u'Recurring Events'],http://github.com/noctivityinc/tickle
+[u'Recurring Events'],http://github.com/texel/runt
+[u'Recurring Events'],http://github.com/angelic/schedule_fu
+[u'Recurring Events'],http://github.com/nickstenning/recurring_event
+[u'Recurring Events'],http://github.com/jhubert/ruby-date-recur
+[u'Recurring Events'],http://github.com/EdvardM/recurrence
+[u'Recurring Events'],http://github.com/ggoodale/recurring
+[u'Recurring Events'],http://github.com/kjwierenga/ical-scheduler
+[u'Random Data Generation'],http://github.com/sevenwire/forgery
+[u'Random Data Generation'],http://github.com/benburkert/randexp
+[u'Random Data Generation'],http://github.com/yyyc514/faker
+[u'Random Data Generation'],http://github.com/tomharris/random_data
+[u'RSS Feed Parsing'],http://github.com/pauldix/feedzirra
+[u'RSS Feed Parsing'],http://github.com/aasmith/feed-normalizer
+[u'RSS Feed Parsing'],http://github.com/cardmagic/simple-rss
+[u'RSS Feed Parsing'],http://github.com/jnicklas/feed_me
+[u'RSS Feed Parsing'],http://github.com/ln/ruby-feedparser
+[u'RSS Feed Parsing'],http://github.com/jsl/feedtosis
+[u'Ruby Version Management'],http://github.com/wayneeseguin/rvm
+[u'Ruby Version Management'],http://github.com/vertiginous/pik
+[u'Ruby Version Management'],http://github.com/senny/rvm.el
+[u'Ruby Version Management'],http://github.com/phoet/which_ruby
+[u'Scheduling'],http://github.com/javan/whenever
+[u'Scheduling'],http://github.com/jmettraux/rufus-scheduler
+[u'Scheduling'],http://github.com/latimes/craken
+[u'Scheduling'],http://github.com/Swirrl/Taskit
+[u'Rails Wizards'],http://github.com/adkron/actsaswizard
+[u'Rails Wizards'],http://github.com/jeffp/wizardly
+[u'Rails Wizards'],http://github.com/sbmsuite/wizard
+[u'Rails Wizards'],http://github.com/jimweirich/partially_valid
+[u'Reporting'],http://github.com/acatighera/statistics
+[u'Reporting'],http://github.com/ruport/ruport
+[u'Reporting'],http://github.com/wayneeseguin/dynamic_reports
+[u'Reporting'],http://github.com/sandrods/odf-report
+[u'Reporting'],http://github.com/schacon/munger
+[u'Reporting'],http://github.com/mk/reports_as_sparkline
+[u'Reporting'],http://github.com/saulabs/reportable
+[u'Reporting'],http://github.com/gnoso/spreadsheet_report
+[u'Rails Permalinks &amp; Slugs'],http://github.com/norman/friendly_id
+[u'Rails Permalinks &amp; Slugs'],http://github.com/technoweenie/permalink_fu
+[u'Rails Permalinks &amp; Slugs'],http://github.com/rsl/stringex
+[u'Rails Permalinks &amp; Slugs'],http://github.com/bumi/find_by_param
+[u'Rails Permalinks &amp; Slugs'],http://github.com/norbauer/salty_slugs
+[u'Rails Permalinks &amp; Slugs'],http://github.com/ismasan/sluggable-finder
+[u'Rails Permalinks &amp; Slugs'],http://github.com/ludo/to_slug
+[u'Rails Permalinks &amp; Slugs'],http://github.com/bkoski/slug
+[u'Rails Permalinks &amp; Slugs'],http://github.com/Nielsomat/has_slug
+[u'Social Network Builders'],http://github.com/insoshi/insoshi
+[u'Social Network Builders'],http://github.com/bborn/communityengine
+[u'Social Network Builders'],http://github.com/stevenbristol/lovd-by-less
+[u'Social Network Builders'],http://github.com/parolkar/pfeed
+[u'Social Network Builders'],http://github.com/sjlombardo/acts_as_network
+[u'Social Network Builders'],http://github.com/timothyf/enginey
+[u'Social Network Builders'],http://github.com/swemoney/has_many_friends
+[u'Social Network Builders'],http://github.com/parolkar/has_profile_items
+[u'Server Monitoring'],http://github.com/mojombo/god
+[u'Server Monitoring'],http://github.com/auxesis/visage
+[u'Server Monitoring'],http://github.com/benschwarz/amnesia
+[u'Server Monitoring'],http://github.com/bloopletech/webstats
+[u'SOAP Clients'],http://github.com/rubiii/savon
+[u'SOAP Clients'],http://github.com/troelskn/handsoap
+[u'SOAP Clients'],http://github.com/jeremydurham/serviceproxy
+[u'Security Tools'],http://github.com/flavorjones/loofah
+[u'Security Tools'],http://github.com/NZKoz/rails_xss
+[u'Security Tools'],http://github.com/relevance/tarantula
+[u'Security Tools'],http://github.com/look/xss_terminate
+[u'Security Tools'],http://github.com/mhartl/find_mass_assignment
+[u'Security Tools'],http://github.com/cjbottaro/param_protected
+[u'Security Tools'],http://github.com/wwidea/cross_site_sniper
+[u'Security Tools'],http://github.com/ryanlowe/audit_mass_assignment
+[u'Scripting Frameworks'],http://github.com/wycats/thor
+[u'Scripting Frameworks'],http://github.com/jimweirich/rake
+[u'Scripting Frameworks'],http://github.com/cldwalker/boson
+[u'Scripting Frameworks'],http://github.com/defunkt/sake
+[u'Rails Presenters'],http://github.com/jamesgolick/active_presenter
+[u'Rails Presenters'],http://github.com/apotonick/apotomo
+[u'Rails Presenters'],http://github.com/ihoka/viewtastic
+[u'Rails Presenters'],http://github.com/floere/view_models
+[u'Syntax Highlighting'],http://github.com/simplabs/highlight
+[u'Syntax Highlighting'],http://github.com/michaeledgar/harsh
+[u'Syntax Highlighting'],http://github.com/arya/tm_syntax_highlighting
+[u'Syntax Highlighting'],http://github.com/github/albino
+[u'Syntax Highlighting'],http://github.com/ioquatix/jquery-syntax
+[u'Syntax Highlighting'],http://github.com/augustl/redcloth-with-coderay
+[u'Syntax Highlighting'],http://github.com/spox/ultraviolet
+[u'Syntax Highlighting'],http://github.com/technoweenie/ultraviolence
+[u'Syntax Highlighting'],http://github.com/webficient/rack-coderay
+[u'Syntax Highlighting'],http://github.com/fnando/ink
+[u'State Machines'],http://github.com/rubyist/aasm
+[u'State Machines'],http://github.com/pluginaweek/state_machine
+[u'State Machines'],http://github.com/geekq/workflow
+[u'State Machines'],http://github.com/jmettraux/ruote
+[u'State Machines'],http://github.com/davidlee/state-fu
+[u'State Machines'],http://github.com/avdi/alter-ego
+[u'Static Website Generation'],http://github.com/mojombo/jekyll
+[u'Static Website Generation'],http://github.com/cloudhead/toto
+[u'Static Website Generation'],http://github.com/TwP/webby
+[u'Static Website Generation'],http://github.com/staticmatic/staticmatic
+[u'Static Website Generation'],http://github.com/ddfreyne/nanoc
+[u'Static Website Generation'],http://github.com/benschwarz/bonsai
+[u'Static Website Generation'],http://github.com/sandal/korma
+[u'Static Website Generation'],http://github.com/nex3/dynamicmatic
+[u'Static Website Generation'],http://github.com/gettalong/webgen
+[u'Text Editors in Ruby'],http://github.com/danlucraft/redcar
+[u'Text Editors in Ruby'],http://github.com/Pistos/diakonos
+[u'Text Editors in Ruby'],http://github.com/angal/arcadia
+[u'Time Warping'],http://github.com/jtrupiano/timecop
+[u'Time Warping'],http://github.com/bebanjo/delorean
+[u'Time Warping'],http://github.com/adeptware/time-zone-warp
+[u'Time Warping'],http://github.com/iridesco/time-warp
+[u'Visualizing Data'],http://github.com/DmitryBaranovskiy/raphael
+[u'Visualizing Data'],http://github.com/jashkenas/ruby-processing
+[u'Web App Frameworks'],http://github.com/rails/rails
+[u'Web App Frameworks'],http://github.com/sinatra/sinatra
+[u'Web App Frameworks'],http://github.com/padrino/padrino-framework
+[u'Web App Frameworks'],http://github.com/wycats/merb-core
+[u'Web App Frameworks'],http://github.com/lifo/cramp
+[u'Web App Frameworks'],http://github.com/manveru/ramaze
+[u'Web App Frameworks'],http://github.com/tablatom/hobo
+[u'Web App Frameworks'],http://github.com/botanicus/rango
+[u'Web App Frameworks'],http://github.com/camping/camping
+[u'Web App Frameworks'],http://github.com/madx/rackable
+[u'Web App Frameworks'],http://github.com/wiecklabs/harbor
+[u'Web App Frameworks'],http://github.com/hansineffect/Bats
+[u'Spam Detection'],http://github.com/jfrench/rakismet
+[u'Spam Detection'],http://github.com/technoweenie/viking
+[u'Spam Detection'],http://github.com/dvyjones/defender
+[u'Spam Detection'],http://github.com/defensio/defensio-ruby
+[u'Spam Detection'],http://github.com/levycarneiro/akismetor
+[u'Spam Detection'],http://github.com/mattapayne/rdefensio
+[u'Web servers'],http://github.com/FooBarWidget/passenger
+[u'Web servers'],http://github.com/macournoyer/thin
+[u'Web servers'],http://github.com/defunkt/unicorn
+[u'Web servers'],http://github.com/mongrel/mongrel
+[u'Web servers'],http://github.com/ry/ebb
+[u'Wiki Apps'],http://github.com/github/gollum
+[u'Wiki Apps'],http://github.com/sr/git-wiki
+[u'Wiki Apps'],http://github.com/parasew/instiki
+[u'Wiki Apps'],http://github.com/queso/signal-wiki
+[u'Wiki Apps'],http://github.com/meekish/collective
+[u'Wiki Apps'],http://github.com/jm/perwikity
+[u'Wiki Apps'],http://github.com/augustl/kii
+[u'Wiki Apps'],http://github.com/bomberstudios/bliki
+[u'Wiki Apps'],http://github.com/adamwiggins/bitswiki
+[u'Wiki Apps'],http://github.com/jugyo/gitki
+[u'Wiki Apps'],http://github.com/3scale/acts_as_wiki
+[u'Wiki Apps'],http://github.com/semanticart/hoboken
+[u'Wiki Apps'],http://github.com/benatkin/weaky
+[u'Wiki Apps'],http://github.com/manveru/rakki
+[u'Testing frameworks'],http://github.com/aslakhellesoy/cucumber
+[u'Testing frameworks'],http://github.com/dchelimsky/rspec
+[u'Testing frameworks'],http://github.com/thoughtbot/shoulda
+[u'Testing frameworks'],http://github.com/cavalle/steak
+[u'Testing frameworks'],http://github.com/thumblemonks/riot
+[u'Testing frameworks'],http://github.com/chneukirchen/bacon
+[u'Testing frameworks'],http://github.com/elight/coulda
+[u'Testing frameworks'],http://github.com/jm/matchy
+[u'Testing frameworks'],http://github.com/citrusbyte/contest
+[u'Testing frameworks'],http://github.com/jm/context
+[u'Testing frameworks'],http://github.com/ahoward/testy
+[u'Testing frameworks'],http://github.com/spicycode/micronaut
+[u'Testing frameworks'],http://github.com/seattlerb/minitest
+[u'Testing frameworks'],http://github.com/hashrocket/unencumbered
+[u'Testing frameworks'],http://github.com/jamesgolick/zebra
+[u'Testing frameworks'],http://github.com/geemus/shindo
+[u'Testing frameworks'],http://github.com/solutious/stella
+[u'Testing frameworks'],http://github.com/jm/pending
+[u'Testing frameworks'],http://github.com/citrusbyte/stories
+[u'Testing frameworks'],http://github.com/mynyml/phocus
+[u'Testing frameworks'],http://github.com/gpiancastelli/fit
+[u'Testing frameworks'],http://github.com/proutils/lemon
+[u'Testing frameworks'],http://github.com/sunaku/dfect
+[u'Systems Integration'],http://github.com/opscode/chef
+[u'Systems Integration'],http://github.com/crafterm/sprinkle
+[u'Systems Integration'],http://github.com/reductivelabs/puppet
+[u'Systems Integration'],http://github.com/benschwarz/passenger-stack
+[u'Systems Integration'],http://github.com/benhoskings/babushka
+[u'Systems Integration'],http://github.com/mitchellh/vagrant
+[u'Systems Integration'],http://github.com/solutious/rudy
+[u'Systems Integration'],http://github.com/automateit/automateit
+[u'XML Mapping'],http://github.com/jnunemaker/happymapper
+[u'XML Mapping'],http://github.com/Empact/roxml
+[u'XML Mapping'],http://github.com/pauldix/sax-machine
+[u'XML Mapping'],http://github.com/mdub/representative
+[u'Template Languages'],http://github.com/nex3/haml
+[u'Template Languages'],http://github.com/tobi/liquid
+[u'Template Languages'],http://github.com/defunkt/mustache
+[u'Template Languages'],http://github.com/pivotal/erector
+[u'Template Languages'],http://github.com/judofyr/parkaby
+[u'Template Languages'],http://github.com/stonean/ruhl
+[u'Template Languages'],http://github.com/markaby/markaby
+[u'Template Languages'],http://github.com/scottpersinger/laminate
+[u'Template Languages'],http://github.com/ahoward/tagz
+[u'Template Languages'],http://github.com/sunaku/ember
+[u'API Clients'],http://github.com/jnunemaker/twitter
+[u'API Clients'],http://github.com/geemus/fog
+[u'API Clients'],http://github.com/mattetti/googlecharts
+[u'API Clients'],http://github.com/vigetlabs/garb
+[u'API Clients'],http://github.com/moomerman/twitter_oauth
+[u'API Clients'],http://github.com/grempe/amazon-ec2
+[u'API Clients'],http://github.com/intridea/tweetstream
+[u'API Clients'],http://github.com/marcel/aws-s3
+[u'API Clients'],http://github.com/fcoury/octopi
+[u'API Clients'],http://github.com/mislav/contacts
+[u'API Clients'],http://github.com/hayesdavis/grackle
+[u'API Clients'],http://github.com/bgetting/hominid
+[u'API Clients'],http://github.com/hanklords/flickraw
+[u'API Clients'],http://github.com/commonthread/flickr_fu
+[u'API Clients'],http://github.com/pengwynn/linkedin
+[u'API Clients'],http://github.com/collectiveidea/tinder
+[u'API Clients'],http://github.com/mbbx6spp/twitter4r
+[u'API Clients'],http://github.com/philnash/bitly
+[u'API Clients'],http://github.com/matthooks/vimeo
+[u'API Clients'],http://github.com/dancroak/twitter-search
+[u'API Clients'],http://github.com/lukeredpath/clickatell
+[u'API Clients'],http://github.com/voloko/twitter-stream
+[u'API Clients'],http://github.com/tylerhunt/remit
+[u'API Clients'],http://github.com/deepakjois/gchartrb
+[u'API Clients'],http://github.com/rackspace/ruby-cloudfiles
+[u'API Clients'],http://github.com/Caged/lighthouse-api
+[u'API Clients'],http://github.com/robmckinnon/rugalytics
+[u'API Clients'],http://github.com/codyfauser/ebay
+[u'API Clients'],http://github.com/shvets/google-translate
+[u'API Clients'],http://github.com/maddox/imdb
+[u'API Clients'],http://github.com/squeejee/twitterland
+[u'API Clients'],http://github.com/jugend/amazon-ecs
+[u'API Clients'],http://github.com/jeffkreeftmeijer/tumblr
+[u'API Clients'],http://github.com/jordanbrock/campaign-monitor-ruby
+[u'API Clients'],http://github.com/rpheath/google_ajax_libraries_api
+[u'API Clients'],http://github.com/weppos/www-delicious
+[u'API Clients'],http://github.com/completelynovel/amazon-product-advertising-api
+[u'API Clients'],http://github.com/abhay/gchart
+[u'API Clients'],http://github.com/coderrr/facebook_chat
+[u'API Clients'],http://github.com/mbleigh/ruby-github
+[u'API Clients'],http://github.com/schleyfox/wikipedia-api
+[u'API Clients'],http://github.com/webco/tuiter
+[u'API Clients'],http://github.com/phoet/asin
+[u'API Clients'],http://github.com/rightscale/right_flexiscale
