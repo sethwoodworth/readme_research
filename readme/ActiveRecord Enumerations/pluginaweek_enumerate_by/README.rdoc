@@ -1,0 +1,117 @@
+= enumerate_by
+
++enumerate_by+ adds support for declaring an ActiveRecord class as an
+enumeration.
+
+== Resources
+
+API
+
+* http://rdoc.info/projects/pluginaweek/enumerate_by
+
+Bugs
+
+* http://pluginaweek.lighthouseapp.com/projects/13265-enumerate_by
+
+Development
+
+* http://github.com/pluginaweek/enumerate_by
+
+Source
+
+* git://github.com/pluginaweek/enumerate_by.git
+
+== Description
+
+Support for enumerations is dependent on the type of database you use.  For
+example, MySQL has native support for the enum data type.  However, there is
+no native Rails support for defining enumerations and the associations between
+it and other models in the application.
+
+In addition, enumerations may often have more complex data and/or functionality
+associated with it that cannot simply be describe in a single column.
+
+enumerate_by adds support for pseudo-enumerations in Rails by allowing the
+enumeration's records to be defined in code, but continuing to express the
+relationship between an enumeration and other models using ActiveRecord
+associations.  The important thing to remember, however, is that while the
+associations exist, the enumerator is always used outside of the application,
+while either the enumerator or the enumerator's record would be referenced
+*within* the application.  This means that you would reference a Color record
+via its enumerator (such as "red") everywhere in the code (conditions,
+assigning associations, forms, etc.), but it would always be stored in the
+database as a true association with the integer value of 1.
+
+== Usage
+
+  class Color < ActiveRecord::Base
+    enumerate_by :name
+    
+    belongs_to :group, :class_name => 'ColorGroup'
+    has_many :cars
+    
+    bootstrap(
+      {:id => 1, :name => 'red', :group => 'RGB'},
+      {:id => 2, :name => 'blue', :group => 'RGB'},
+      {:id => 3, :name => 'green', :group => 'RGB'},
+      {:id => 4, :name => 'cyan', :group => 'CMYK'}
+    )
+  end
+  
+  class ColorGroup < ActiveRecord::Base
+    enumerate_by :name
+    
+    has_many :colors, :foreign_key => 'group_id'
+    
+    bootstrap(
+      {:id => 1, :name => 'RGB'},
+      {:id => 2, :name => 'CMYK'}
+    )
+  end
+  
+  class Car < ActiveRecord::Base
+    belongs_to :color
+  end
+
+Each of the above models is backed by the database with its own table.  Both
+the Color and ColorGroup enumerations automatically synchronize with the
+records in the database based on what's defined in their bootstrap data.
+
+The enumerations and their associations can then be used like so:
+
+  car = Car.create(:color => 'red')   # => #<Car id: 1, color_id: 1>
+  car.color                           # => #<Color id: 1, name: "red">
+  car.color == 'red'                  # => true
+  car.color.name                      # => "red"
+  
+  car.color = 'blue'
+  car.save                            # => true
+  car                                 # => #<Car id: 1, color_id: 2>
+  
+  # Serialization
+  car.to_json                         # => "{id: 1, color: \"blue\"}"
+  car.to_xml                          # => "<car><id type=\"integer\">1</id><color>blue</color></car>"
+  
+  # Lookup
+  Car.with_color('blue')              # => [#<Car id: 1, color_id: 2>]
+  car = Car.find_by_color('blue')     # => #<Car id: 1, color_id: 2>
+  car.color == Color['blue']          # => true
+
+As mentioned previously, the important thing to note from the above example is
+that from an external perspective, "color" is simply an attribute on the Car.
+However, it's backed by a more complex association and model that allows Color
+to include advanced functionality that would normally not be possible with a
+simple attribute.
+
+== Testing
+
+Before you can run any tests, the following gem must be installed:
+* plugin_test_helper[http://github.com/pluginaweek/plugin_test_helper]
+
+To run against a specific version of Rails:
+
+  rake test RAILS_FRAMEWORK_ROOT=/path/to/rails
+
+== Dependencies
+
+* Rails 2.1 or later

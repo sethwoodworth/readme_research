@@ -1,0 +1,101 @@
+== NetRecorder
+
+Record network responses for easy stubbing of external calls.
+
+Net recorder hooks into NetHTTP to record the outgoing request path and method and caches the response.  Then you can switch on fakeweb and it will use the cache from the recording.
+
+== Requirements
+
+  gem install fakeweb
+
+== Install
+
+  gem install netrecorder
+  
+== Usage
+  
+Anywhere you use fakeweb, you can use net recorder.
+  
+Record all responses:
+  
+  NetRecorder.config do |config|
+    config.cache_file       = File.join(RAILS_ROOT, 'fakeweb')
+    config.record_net_calls = true
+  end
+
+Save recorded responses:
+
+  NetRecorder.cache!
+
+Use recorded cache with fakeweb:
+  
+  NetRecorder.config do |config|
+    config.cache_file = File.join(RAILS_ROOT, 'features', 'support', 'fakeweb')
+    config.fakeweb    = true
+  end
+  
+== Scopes
+
+Net recorder makes it easy to add a 'scope' to your recordings.  Fakeweb doesn't have a way to name a response.  If you make a request to the same url twice and get a different response both times, fakeweb just stores the responses in an array and returns them in order.  This means that whatever you are testing will have to maintain the order or else you won't get the correct mocked data for your tests.  So netrecorder allows you to set a scope that can be used when registering with fakeweb.
+
+To record using scopes:
+
+  if NetRecorder.recording?
+    NetRecorder.scope = 'first request'
+    # request www.something.com
+    # make a change that alters the return value from www.something.com
+    NetRecorder.scope = "second request"
+    # request www.something.com
+  end
+
+To register the scoped cache with fakeweb:
+
+  if !NetRecorder.recording?
+    FakeWeb.clean_registry # This will clear out any previous registrations so that our scope will not be added to the array of reponses
+    NetRecorder.register_scope(scenario.name)
+  end
+
+== Cucumber Example
+
+see http://cukes.info for more info on testing with Cucumber
+  # Find me in features/support/netrecorder.rb
+  
+  NetRecorder.config do |config|
+    config.cache_file = "#{File.dirname(__FILE__)}/../support/fakeweb"    
+    if ENV['RECORD_WEB']
+      config.record_net_calls = true
+    else
+      config.fakeweb = true
+      FakeWeb.allow_net_connect = false
+    end
+  end 
+
+  at_exit do
+    if NetRecorder.recording?
+      NetRecorder.cache!
+    end
+  end
+  
+  # Scope all the recordings to the scenario name!
+  Before do |scenario|
+    if NetRecorder.recording?
+      NetRecorder.scope = scenario.name
+    else
+      FakeWeb.clean_registry
+      NetRecorder.register_scope(scenario.name)
+    end
+  end
+
+record mode (command line)
+  >> rake features RECORD_WEB=true
+
+cache mode (command line)
+  >> rake features
+
+== Similar projects
+
+*StaleFish*[http://github.com/jsmestad/stale_fish]
+  
+  * Uses fixtures to store netrequests
+  * More configuration options
+  * Configure fixtures to atomically refresh themselves at an interval

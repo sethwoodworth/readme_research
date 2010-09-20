@@ -1,0 +1,23 @@
+=====  Signal Wiki
+
+Signal Wiki is an easy to use wiki that was built with standards in mind.  It uses some of the more common rails plugins and practises to make sure it is easy to integrate this wiki into your suite of site offerings.  We wanted something we could tie into a shared user table so multiple apps (beast was the app at the time) could have the same login, so we used restful auth.  We had several clients asking for this, so we decided it must be a big need.  With our clients agreement, we extracted the basic wiki parts and cleaned it up and the result is this code.  
+
+Enjoy :)
+
+=====  Installation instructions
+
+#FIXME: Detail these instructions more
+1. Download app
+2. Copy config/database.yml.example to config/database.yml
+3. Run "rake db:migrate" from the root of the app
+4. Start your rails app (using mongrel or fcgi, or whatever crazy method you use)
+5. Input your wiki stuffs
+
+=====  Required Gems
+
+* json
+* ruby-openid
+* ruby-yadis
+* RedCloth
+
+

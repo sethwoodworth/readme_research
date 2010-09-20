@@ -1,0 +1,24 @@
+= Welcome to Zena
+
+Zena is a CMS. (c) Gaspard Bucher, teti.ch 2007
+
+This documentation is being massively cleaned up before release.
+
+You can start by looking at Node or by reading zenadmin.org[http://zenadmin.org/en/documentation].
+
+Thanks for your patience.
+
+== Presentation
+
+Zena is a content management system. It lets you manage, share and write information.
+
+=== Design
+
+One of the strong design ideas in zena was to use class inheritance to reflect the type of data managed. Please look at Node to view the actual class inheritance diagram.
+
+=== Templating
+
+Please look at zafu[http://zenadmin.org/en/documentation/page24.html] until we finish writing this section.
+
+=== general info
+* when creating the database: "create database zena DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;"

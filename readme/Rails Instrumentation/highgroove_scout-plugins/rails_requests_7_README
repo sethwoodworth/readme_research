@@ -1,0 +1,34 @@
+Rails Requests Plugin
+======================
+Created by [Scout](http://scoutapp.com)
+
+Overview
+--------
+
+Analyzes the performance of a Ruby on Rails application via its log file. Just install this plugin in Scout and provide the full path to the Rails log file (ex: /var/www/app/APP_NAME/log/production.log). The plugin generates an alert when any slow requests are generated and creates a detailed performance report via the [Request Log Analyzer gem](http://github.com/wvanbergen/request-log-analyzer/tree/master) every 24 hours. 
+
+By default, a slow request is any request that is greater than or equal to 3 seconds. This can be modified in the plugin settings. 
+
+Note that the Request Log Analyzer may take a couple of minutes to run on large log files. 
+
+On the first run, a detailed report is generated for the previous 2 days of activity. No metric data is reported on the first run (requests, slow requests, and average request time).
+
+Dependencies
+------------
+
+Requires:
+
+[elif gem](http://elif.rubyforge.org/):
+
+sudo gem install elif
+
+[request-log-analyzer gem](http://github.com/wvanbergen/request-log-analyzer/tree/master)
+
+sudo gem install request-log-analyzer
+
+Compatibility 
+-------------
+
+Tested on Linux, OSX, and Solaris. Requires the Scout Agent version 4.0 or greater.
+
+

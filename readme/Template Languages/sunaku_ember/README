@@ -1,0 +1,34 @@
+== DESCRIPTION
+
+Ember (**EMBE**dded **R**uby) is an <<eRuby>> template processor that allows
+debugging, reduces markup, and improves composability of eRuby templates.
+
+=== Features
+
+* Reports correct line numbers in error message stack traces.
+
+* Omits newlines trailing code-only `<%% ... %>` directives.
+
+* Can infer missing `<%% end %>` directives based on indentation.
+
+* Can unindent eRuby block bodies hierarchically.
+
+* Implemented in <%= `sloccount lib/ember/template.rb`[/^\d+/] %> lines of
+  pure Ruby.
+
+=== Resources
+
+Project website::
+<%= @proj_home_url = Ember::WEBSITE %>
+
+Announcements feed::
+<%= @ann_feed_url = File.join(@proj_home_url, 'ann.xml') %>
+
+API documentation::
+<%= @api_docs_url = File.join(@proj_home_url, 'api/') %>
+
+Source code (browse online, download, or checkout)::
+<%= @code_repo_url = 'http://github.com/sunaku/ember' %>
+
+Issue tracker (report bugs, request features, get help)::
+<%= @bug_track_url = File.join(@code_repo_url, 'issues') %>

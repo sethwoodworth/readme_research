@@ -1,0 +1,48 @@
+h1. Installation via RubyGems
+
+* Daily builds: @gem install rango --pre@ and @gem install simple-templater@. RubyGems don't work with prerelease gems properly, so you can't just run @gem install simple-templater rango --pre@. The trouble is when you are installing with @--pre@, RubyGems are looking just for prerelease gems, but Erubis, which is dependency of simple-templater, doesn't have any prerelease gem.
+* Stable version: @gem install simple-templater rango@
+* JRuby: @jruby --1.9 -S gem install simple-templater rango@ is how you should install Rango for JRuby. Unfortunately I'm getting strange errors here. Don't forget the @--1.9@ argument, because Rango can be installed just on Ruby 1.9.
+
+_Rango itself doesn't define any runtime dependencies, since you may want to use just a subset of Rango, i. e. just template layer. If you are using stack generator, you get @Gemfile@ with usual dependencies, so @gem bundle@ will take care about it._
+
+h1. Installation via "Rip":http://hellorip.com
+
+* Install edge version: @rip install git://github.com/botanicus/rango.git@
+* Install tagged version: @rip install git://github.com/botanicus/rango.git 0.2@
+
+h1. How to Contribute To Rango
+
+Contributions to Rango is easy, you don't have to create a ticket or something, the only thing you really have to do is write good code. Before you send a pull request, please ensure that you:
+* Have no trailing whitespace in your code (if you run @rake hooks@, you get git pre-commit hook which take care about it)
+* Wrote YARD documentation
+* Wrote specs and run them under at least under Ruby 1.9.1, ideally under all the supported Ruby platforms:
+
+<pre>
+# run all the specs under Ruby 1.9.1 and Ruby 1.9.2
+rvm specs 1.9.1,1.9.2
+
+# run given spec under all installed Ruby implementations
+rvm ruby ./script/spec spec/rango/mixins/message_spec.rb
+
+# run given spec under Ruby 1.9.1
+rvm 1.9.1 ruby ./script/spec spec/rango/mixins/message_spec.rb
+</pre>
+
+h1. Documentation
+
+* "Wiki":http://wiki.github.com/botanicus/rango
+* Presentation "Introduction to Rango":http://www.slideshare.net/botanicus/rango
+* "Tutorial":http://wiki.github.com/botanicus/rango/tutorial
+* "RDoc.info API Docs":http://rdoc.info/projects/botanicus/rango
+* "Yardoc.org API Docs":http://yardoc.org/docs/botanicus-rango
+* "Examples":http://github.com/botanicus/rango-examples
+* "Bug reporting":http://github.com/botanicus/rango/issues
+* "Caliper Code Metrics":http://devver.net/caliper/project?repo=git%3A%2F%2Fgithub.com%2Fbotanicus%2Frango.git
+
+h1. Community
+
+* "Google Group":http://groups.google.com/group/rango-project
+* "Rango Blog":http://botanicus.github.com/rango
+* "Twitter":https://twitter.com/RangoProject
+* IRC: #rango at irc://irc.freenode.net

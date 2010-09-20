@@ -1,0 +1,32 @@
+PostgreSQL Monitoring Plugin
+======================
+Created by [Koordinates](http://koordinates.com)
+
+Provides a summary of PostgreSQL cluster query activity. The following 
+query statistics are recorded:
+
+* Rate of SELECTs (from index) (rows/second)
+* Rate of SELECTs (from scans) (rows/second)
+* Rate of INSERTs (rows/second)
+* Rate of DELETEs (rows/second)
+* Rate of UPDATEs (rows/second)
+* Rate of REPLACEs (rows/second)
+* Rate of total queries (rows/second)
+* Rate of transactions committed (txn/second)
+* Rate of transactions rolled back (txn/second)
+* Rate of total transactions (txn/second)
+* Blocks read from disk (blocks/second)
+* Blocks read from buffer cache (blocks/second)
+* Buffer cache hit rate (%)
+* Number of active backends
+
+Dependencies
+------------
+Requires the [pg library](http://bitbucket.org/ged/ruby-pg/wiki/Home):
+
+	gem install pg
+
+Compatibility 
+-------------
+Tested on Linux, should work on OSX. 
+

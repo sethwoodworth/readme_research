@@ -1,0 +1,40 @@
+== crate
+
+* Homepage[http://copiousfreetime.rubyforge.org/crate]
+* {Rubyforge Project}[http://rubyforge.org/projects/copiousfreetime/]
+* email jeremy at copiousfreetime dot org 
+* git clone url git://github.com/copiousfreetime/crate.git
+* {Packaging an Application With Crate}[http://copiousfreetime.org/articles/2008/11/30/package-an-application-with-crate.html]
+* {RubyConf '08 Presentation}[http://rubyconf2008.confreaks.com/crate-packaging-your-ruby-application.html]
+
+== DESCRIPTION
+
+Crate is a developer tool to help package up your application as a custom static
+build of the ruby interpreter plus all dependent binary extensions.  All the
+pure ruby code (the ruby application, the ruby stdlib, etc ) is packed into one
+or more SQLite databases.
+
+The final distributable pieces are a single executable and a few SQLite
+databases which can be then wrapped up appropriately as an OS X App; a self
+extracting executable for Windows; a shar archive, rpm or tarball for Unixes.
+
+== INSTALL
+
+gem install crate
+
+== LICENSE
+
+Copyright (c) 2008, Jeremy Hinegardner
+
+Permission to use, copy, modify, and/or distribute this software for any purpose
+with or without fee is hereby granted, provided that the above copyright notice
+and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
+THIS SOFTWARE.
+

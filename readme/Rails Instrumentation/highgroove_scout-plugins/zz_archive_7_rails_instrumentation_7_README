@@ -1,0 +1,16 @@
+Rails Instrumentation Plugin
+======================
+
+UPDATE 9/14/2009 - This plugin has been deprecated and will no longer be supported. Please see the 'rails_request' plugin
+in this repo for Ruby on Rails monitoring.
+
+Created by [Scout](http://scoutapp.com)
+
+This is a Scout Plugin that provides deep rails instrumentation. The Scout Agent (version 3.0) is required along with its companion Rails plugin.
+
+Compatibility 
+-------------
+
+Works on Linux and OSX.
+
+

@@ -1,0 +1,125 @@
+= DESCRIPTION:
+
+CMS with super natural powers, based on Ruby on Rails
+
+website: http://zenadmin.org
+licence: MIT
+
+= Getting started
+
+ # sudo gem install zena
+ # zena myapp
+ # cd myapp
+ # rake zena:init RAILS_ENV=production
+
+You can now visit http://localhost:3000 (user = admin, password = admin)
+
+These commands do the following:
+
+ 1. Install the zena gem and dependencies
+ 2. Create an empty application
+ 3. ...
+ 4. Create the database, migrate, create the 'localhost' website in 'production' environment and start server.
+
+The 'zena:init' rake task does the following:
+
+ # rake db:create RAILS_ENV=production
+ # rake zena:migrate
+ # rake zena:mksite LANG=en RAILS_ENV=production PASSWORD=admin HOST=localhost
+ # script/server -e production
+
+Read more: http://zenadmin.org/documentation
+
+== Details
+
+Have a look at the generator used by 'zena' command:
+
+http://github.com/zena/zena/blob/master/config/zena.rb
+
+=== Production
+
+You should use capistrano to ease deployment. See 'config/delploy.rb'.
+
+=== Create a new site
+# rake zena:mksite HOST=example.com PASSWORD=secret RAILS_ENV=production
+
+=== Start
+# ruby lib/upload_progress_server.rb start
+# script/server -S config/mongrel_upload_progress.conf
+
+=== Stop
+# ^C  (interrupt)
+# ruby lib/upload_progress_server.rb stop
+
+
+=== Login
+You can now login with 'admin' and the password you used to make the site.
+
+=== Dependencies
+
+=== 1. Original in debian etch (might need to replace jpeg by libjpeg62)
+  # aptitude install build-essential apache2 mysql-server libmagick9-dev gs-gpl libssl-dev gettext libgettext-ruby libreadline5 libreadline5-dev zlib1g-dev libncurses5 libncurses5-dev unzip liburi-perl libjpeg-dev subversion ssh sudo awstats
+
+If you want to enable LateX (PDF generation)
+tetex-bin tetex-extra latex-ucs
+
+For math mode (inline formulas), you will need
+latex dviutils gs-gpl imagemagick   # use 'dvips' if dviutils is not found. Use 'tetex' if 'latex' not found.
+
+For xsl-fo pdf generation
+xsltproc fop # (contrib sources needed on debian for 'fop')
+             # use 'libxslt' if the package 'xsltproc' does not exist for your platform.
+
+# ocaml-base-nox can be replaced by 'ocaml'
+=== 2. To be installed by hand
+ruby1.8.6
+    # wget ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.6.tar.gz
+    # tar xzf ruby-1.8.6.tar.gz
+    # cd ruby-1.8.6
+    # ./configure --with-openssl
+    # make && make install
+rubygems
+    # wget http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
+    # tar xzf rubygems-1.3.1.tgz
+    # cd rubygems-1.3.1
+    # ruby setup.rb (if ruby is not found, log out and log back in)
+
+ImageMagick (on Linux)
+    # wget ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
+    # tar xzf ImageMagick.tar.gz
+    # cd ImageMagick-*
+    # ./configure
+    # make && make install
+
+ImageMagick (on mac os X using macports)
+    # sudo port install tiff -macosx imagemagick +q8 +gs +wmf
+
+=== 3. install Gems
+
+You can remove "--no-ri --no-rdoc" if you want the documentation
+    # gem install querybuilder rake hoe gettext mongrel mongrel_cluster rmagick tzinfo syntax mongrel_upload_progress uuidtools daemons json capistrano yamltest ruby-debug --no-ri --no-rdoc
+
+Versions:
+
+ querybuilder >= 0.5.5
+ uuidtools >= 2.x
+
+=== Advised tools
+monit (debian package to monitor your mongrel processes)
+
+
+=== Very experimental webDAV
+Should not be used for production.
+
+add this to nodes_controller macros:
+  act_as_railsdav
+  include Zena::WebDav
+
+add this to 'config/environment.rb'
+  require File.join(File.dirname(__FILE__), '../lib/webdav_adapter')
+
+install railsdav
+  # script/plugin install http://svn.liverail.net/svn/plugins/railsdav
+
+install dependencies
+  # sudo gem install mime-types, unicode

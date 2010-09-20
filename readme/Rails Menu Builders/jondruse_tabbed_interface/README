@@ -1,0 +1,63 @@
+TabbedInterface
+===============
+
+
+Build a tabbed interface very easily. Requires Prototype.
+
+see a working example at http://tab-interface.heroku.com
+
+Install
+=======
+
+./script/plugin install git://github.com/jondruse/tabbed_interface.git
+
+Move the ajax-loader.gif from the resources folder to your public images folder, or go make one at http://www.ajaxload.info/. Whatever you do, just make sure you call it ajax-loader.gif.
+
+An example css file is also included in the resources folder.
+
+Example
+=======
+
+In this simple example we setup a TabbedInterface with two tabs.
+
+<% tabbed_content do |box| %>
+
+  # You don't have to include these.  They are the defaults, but this is how you would change them.
+  <% box.content_wrapper = "tabbed_content" %>
+  <% box.navigation_wrapper = "tabbed_navigation" %>
+  <% box.tab_tag = :li %>
+  <% box.tabs_tag = :ul %>
+
+  # Let's add some tabs!
+  # All you need is a title and a url. Also accepts two options hashes that get passed directly to the link_to_remote call.
+  <% box.tab("Test One", test_one_path, {:method => :post}, {:class => "different-class"}) %>
+  <% box.tab("Test Two", test_two_path) %>
+  
+  <% box.content = capture do %>
+    # Put your default content here (probably the content for the the first tab, but doesn't have to be)
+    Default text
+  <% end %>
+
+<% end %>
+
+
+The tabbed_content helper yields an object that has two main methods.
+
+#tab
+
+This method will setup a new tab header. Just pass the title and the url to call and update the main content area.
+
+#content
+
+The only requirement is that you use capture (as shown above). This sets the default content for the interface. Then when you click on a different tab, the content will be updated. You can put anything in here, but it will probably be a partial, being that the links use link_to_remote to update the main content area. There are no limitations on how any tabs you can have, or how many interfaces you can have on a page.
+
+Enjoy!
+
+
+TO-Do's
+=======
+
+1. more configurable javascript support
+2. tests
+
+Copyright (c) 2009 Jon Druse, released under the MIT license

@@ -1,0 +1,23 @@
+Rails Single Requests Plugin
+======================
+Created by [Highgroove Studios LLC](http://www.highgroove.com)
+
+Monitors a single Rails action.
+
+Dependencies
+------------
+
+Requires the [elif library](http://elif.rubyforge.org/):
+
+	sudo gem install elif
+	
+Options
+-------
+All of the options are required.
+
+Compatibility 
+-------------
+
+Works on Linux and OSX.
+
+

@@ -1,0 +1,173 @@
+Welcome!
+========
+
+FrontCompiler is a simple collection of compactors for the JavaScript,
+CSS and HTML source code. It removes trailing whitespaces, comments and
+transformates the local variables to make the sourcecode shorter.
+
+For JavaScript, it can create a more compressed self-building script
+for your code, see the description below.
+
+The library can be used as a plugin for rails. See description below.
+
+
+RubyGem and Console tool
+========================
+
+FrontCompiler is available as a rubygem at rubygems.com
+
+gem install front-compiler
+
+With the rubygem you'll have a console tool called 'frontcc'
+
+$ frontcc file0.js file1.js file2.js file3.js
+
+
+
+Basic Usage
+===========
+
+It's pretty simple
+
+@c = FrontCompiler.new
+
+@compact_js = @c.compact_js(File.read('src/something.js'));
+@compact_css = @c.compact_css(File.read('src/something.css'));
+@compact_html = @c.compact_html(File.read('src/something.css'));
+
+or shorter
+
+@compact_js = @c.compact_file('src/something.js');
+@compact_css = @c.compact_file('src/something.css');
+@compact_html = @c.compact_file('src/something.css');
+
+or you can compact several files at once like that
+
+@library_code = @c.compact_files(%w{
+  src/lib.js
+  src/lib/something.js
+  src/lib/another.js
+})
+
+Same for the other file-types
+
+CSS Inlining
+============
+
+With the tool you can convert your css source in some javascript
+definition so you could put the styles in the same file as your
+javascript and have -1 (or several) hits to your sever.
+
+File('public/javascripts/all_in_one.js', 'w') do |file|
+  file.write @c.compact_files(%w{
+    public/javascripts/prototype.js
+    public/javascripts/effects.js
+    public/javascripts/application.js
+  })
+
+  file.write @c.inline_css(
+    File.open('public/stylesheets/application.css').read
+  )
+end
+
+Now you have a single javascript file which contains both, javascript
+and the application stylesheets in one.
+
+NOTE: if the user have JavaScript switched off, then he won't see the
+styles.
+
+Nested CSS Handling
+===================
+
+Nested CSS is a feature when you describe your css with nested constructions
+like that
+
+div.article {
+  div.title {
+    font-weight: bold;
+    span.date {
+      color: pink;
+    }
+  }
+  div.text {
+    background: #EEE;
+  }
+}
+
+Which means the same as the following code.
+
+div.article div.title {
+  font-weight: bold;
+}
+div.article div.title span.date {
+  color: pink
+}
+div.article div.text {
+  background: #EEE;
+}
+
+Nested styles are more clean, simple and follows the DRY principle. The only
+little problem, there's no browsers which support the feature yet. But the idea
+is alive and people like it. So we have added the feature emulation in the
+project.
+
+You can create nested css descriptions and then when you compress your css
+with FrontCompiler, it will be automatically converted in a correct css source
+which the browsers can understand.
+
+
+Rails Usage
+===========
+
+The project can be used as a usual rails plugin. Just clone the
+project into your vendor/plugins/front_compiler directory and you will
+have the following methods aviable both in your controllers and
+templates
+
+
+* compact_files(list) - compacts the files fromt the given list and
+                        puts them in a single string. You can specify
+                        a list of file-names here.
+
+* compact_file(file)  - compacts the given file (can be a file-name)
+
+* compact_js(source)  - returns compacted version of the given source
+* compact_css(source)
+* compact_html(source)
+
+* inline_css(source)    - converts the css-source in javascript
+* inline_css_file(file) - converts the given css-file in a javascript
+                          source (can be a file-name)
+
+
+Self-Build Scripts
+==================
+
+FrontCompiler provides you another nice feature, the scripts self-building.
+The idea is that it will convert your code into a string, replace all long
+tokens by short replacements and then compile a javascript code which will
+replace all the tokens back on the user's browser side.
+
+This will give you extra 20-40% compression over the existing FrontCompiler
+compression.
+
+The browser side restoration happens pretty quick and almost invisible for
+the end user.
+
+As the feature actually change the code and requires the end script to be
+executed with JavaScript, it won't work if you use JSON as a media format
+without actual evaluating it as a javascript code. For this reason, to use
+the feature, you need to call it specifically.
+
+@c = FrontCompiler.new
+@c.compact_js(File.read('src/something.js').create_self_build;
+
+If you want FrontCompiler to create self-builds by default you can just
+uncomment the call in the java_script.rb file.
+
+
+Enjoy!
+
+--
+The code released under terms of the MIT License
+Copyright (C) 2008-2010 Nikolay V. Nemshilov aka St.

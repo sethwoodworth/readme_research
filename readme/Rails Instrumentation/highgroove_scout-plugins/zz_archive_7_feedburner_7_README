@@ -1,0 +1,28 @@
+Feedburner Plugin
+======================
+Created by [Highgroove Studios LLC](http://www.highgroove.com)
+
+Returns the feed circulation and hits from yesterday for the given feed.
+
+Dependencies
+------------
+Requires the [hpricot library](http://code.whytheluckystiff.net/hpricot/):
+
+	sudo gem install hpricot
+
+Compatibility 
+-------------
+Works fully on Linux and OSX. 
+
+Requirements
+------------
+FeedBurner Account w/awareness turned on (http://feedburner.com)
+
+
+Compatibility 
+-------------
+Works fully on Linux and OSX.
+
+Thanks
+------
+Code (and inspiration) taken and updated from [Burnalytics](http://www.eribium.org/blog/?p=51)

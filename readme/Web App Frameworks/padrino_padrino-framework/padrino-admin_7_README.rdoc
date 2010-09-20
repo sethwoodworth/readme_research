@@ -1,0 +1,70 @@
+= Admin Dashboard and Authentication (padrino-admin)
+
+=== Overview
+
+Padrino has a beautiful Admin management dashboard with these features:
+
+Orm Agnostic:: Data Adapters for Datamapper, Activerecord, Sequel, Mongomapper, Mongoid, Couchrest
+Template Agnostic:: Erb and Haml Renderer
+Authentication:: Support for Account authentication, Account Permission managment
+Scaffold:: You can simply create a new "admin interface" by providing a Model
+Access Control:: Supports authentication and role permissions for your application
+
+=== Admin Dashboard Usage
+
+For a complete look at usage of the Admin dashboard functionality, be sure to check out the
+{Padrino Admin}[http://www.padrinorb.com/guides/padrino-admin] guide.
+
+Create a new project:
+
+  $ padrino-gen project demo
+  $ cd demo
+
+Create the admin subapplication:
+
+  demo$ padrino-gen admin
+
+Next, follow the admin setup steps:
+
+* configure your <tt>config/database.rb</tt> to connect to the correct data.
+* run <tt>padrino rake dm:migrate</tt> # or ar:migrate if you use activerecord
+* run <tt>padrino rake seed</tt>
+
+Your admin panel now is ready and you can start your server with <tt>padrino start</tt> and point your browser to <tt>/admin</tt>!
+
+To create a new "scaffold" you need to provide only a Model name to the command:
+
+  demo$ padrino-gen model post --skip-migration # edit your post.rb model and add some fields
+  demo$ padrino-gen rake dm:auto:migrate
+  demo$ padrino-gen admin_page post
+  demo$ padrino start # and go to http://localhost:3000/admin
+
+That's all!!
+
+=== Admin Access Control
+
+Padrino Admin use a model Account for manage role, membership and permissions.
+
+For an ecommerce website, usually certain actions require permissions and authentication. This is supported
+by the admin access control features:
+
+  class EcommerceSite < Padrino::Application
+    register Padrino::Admin::AccessControl
+    enable :store_location
+    set    :login_page, "/login"
+
+    access_control.roles_for :any do |role|
+      role.protect "/customer/orders"
+      role.protect "/cart/checkout"
+    end
+  end
+
+In this example +if+ we visit urls that start with /+customer+/+orders+ or /+cart/checkout+ we will be redirected
+to our :+login_page+ "/login". Once we are correctly logged in we can visit these pages.
+
+For a more complete look at using the Admin panel functionality and access features, be sure to check out the
+{Padrino Admin}[http://www.padrinorb.com/guides/padrino-admin] guide.
+
+== Copyright
+
+Copyright (c) 2010 Padrino. See LICENSE for details.

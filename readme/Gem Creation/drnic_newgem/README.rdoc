@@ -1,0 +1,125 @@
+= New Gem Generator
+
+* http://newgem.rubyforge.org
+
+== DESCRIPTION:
+
+Quickly bundle any Ruby libraries into a RubyGem and share it with the world, your colleagues, or perhaps just with yourself amongst your projects.
+
+RubyGems are centrally stored, versioned, and support dependencies between other gems, so they are the ultimate way to bundle libraries, executables, associated tests, examples, and more.
+
+Within this gem, you get one thing - <code>newgem</code> - an executable to create your own gems. Your new gems will include designated folders for Ruby code, test files, executables, and even a default website page for you to explain your project, and which instantly uploads to RubyForge website (which looks just like this one by default)
+  
+== BASIC USAGE:
+
+Go to the folder where you want to create your new gem folder structure, and run the <code>newgem</code> command to generate your gem scaffolding.
+
+  cd ~/ruby_projects
+  $ newgem wizzo
+          create  
+          create  doc
+          create  lib
+          create  script
+          create  tasks
+          create  lib/wizzo
+          create  History.txt
+          create  Rakefile
+          create  README.rdoc
+          create  PostInstall.txt
+          create  lib/wizzo.rb
+      dependency  install_test_unit
+          create    test
+          create    test/test_helper.rb
+          create    test/test_wizzo.rb
+      dependency  install_website
+          create    website/javascripts
+          create    website/stylesheets
+          create    config
+          exists    script
+          exists    tasks
+          create    website/index.txt
+          create    website/index.html
+          create    config/website.yml.sample
+          create    script/txt2html
+      dependency    plain_theme
+          exists      website/javascripts
+          exists      website/stylesheets
+          create      website/template.html.erb
+          create      website/stylesheets/screen.css
+          create      website/javascripts/rounded_corners_lite.inc.js
+      dependency  install_rubigen_scripts
+          exists    script
+          create    script/generate
+          create    script/destroy
+          create  script/console
+          create  Manifest.txt
+          readme  readme
+    Important
+    =========
+
+    * Open Rakefile
+    * Update missing details (gem description, dependent gems, etc.)
+
+You can generate test::unit or rspec test stubs via the -T, --test-with options (shoulda coming soon)
+
+== SYNOPSIS:
+
+Now modify the constants at the top of *config/hoe.rb*, with your name, email and the location where you'll host your website for the gem. The defaults are tied to RubyForge for uploading the gems and the website.
+
+== REQUIREMENTS:
+
+* hoe
+* rubyforge
+
+== INSTALL:
+
+The <code>newgem</code> application is distributed itself as a RubyGem and is available immediately after installation.
+
+  sudo gem install newgem
+
+Alternately, download the gem and install manually.
+
+== TICKETS:
+
+Tickets or suggestions can be raised at http://drnic.lighthouseapp.com/projects/18881-newgem/overview
+
+== DOES IT WORK?
+
+Much of newgem's behaviour is covered by functional tests (see features at http://github.com/drnic/newgem/tree/master/features).
+
+With each commit to the master branch of the git repository, these functional tests and the unit tests are run via a continuous integration server. 
+
+Current build status: http://runcoderun.com/drnic/newgem
+
+== TUTORIALS:
+
+* Home page is a full tutorial - http://newgem.rubyforge.org
+* Original blog article and tutorial - http://drnicwilliams.com/2006/10/11/generating-new-gems/
+* Tutorial: Publishing RubyGems with Hoe - http://nubyonrails.com/articles/2007/06/15/tutorial-publishing-rubygems-with-hoe by Geoffrey Grosenbach
+* Using New Gem Generator in Windows - http://codeconversations.blogspot.com/2007/07/using-new-gem-generator-in-windows_8009.html by Jorge Cangas
+* Building a Ruby Gem - http://bogojoker.com/blog/2008/05/building-a-ruby-gem/ by Joseph Pecoraro (includes a Problems/Troubleshooting section!!)
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2006-2008 Dr Nic Williams
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

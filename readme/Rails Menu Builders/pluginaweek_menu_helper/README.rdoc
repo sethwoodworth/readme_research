@@ -1,0 +1,100 @@
+= menu_helper
+
++menu_helper+ adds a helper method for generating a menubar.
+
+== Resources
+
+API
+
+* http://rdoc.info/projects/pluginaweek/menu_helper
+
+Bugs
+
+* http://pluginaweek.lighthouseapp.com/projects/13280-menu_helper
+
+Development
+
+* http://github.com/pluginaweek/menu_helper
+
+Source
+
+* git://github.com/pluginaweek/menu_helper.git
+
+== Description
+
+The generation of a menubar's structure can often be a repetitive and unDRY
+process.  A standard using unordered lists is generally followed when creating
+a menubar.  menu_helper attempts to following this standard in addition to
+automatically adding ids, classes for selected menus, and default urls each
+menu is linked to (base on various information, such as the name of the menu).
+
+== Usage
+
+routes.rb:
+  ActionController::Routing::Routes.draw do |map|
+    map.with_options(:controller => 'site') do |site|
+      site.home '', :action => 'index'
+    end
+    
+    map.with_options(:controller => 'about_us') do |about_us|
+      about_us.about_us 'about_us', :action => 'index'
+      about_us.contact 'about_us/contact', :action => 'contact'
+      about_us.who_we_are 'about_us/who_we_are', :action => 'who_we_are'
+    end
+    
+    map.resources :products
+    map.resources :services
+  end
+
+_menu_bar.html.erb:
+  <%=
+    menu_bar do |main|
+      main.menu :home
+      main.menu :products
+      main.menu :services
+      main.menu :about_us do |about_us|
+        about_us.menu :overview, 'Overview', about_us_url
+        about_us.menu :who_we_are
+        about_us.menu :contact, 'Contact Us'
+      end
+      main.menu :search, 'Search!', 'http://www.google.com', :class => 'ir'
+    end
+  %>
+
+Output (formatted for sanity):
+  <ul class="ui-menubar ui-menubar-1">
+    <li class="ui-menubar-menu ui-menubar-menu-1"><a href="http://example.com/"><span>Home</span></a></li>
+    <li class="ui-menubar-menu ui-menubar-menu-1"><a href="http://example.com/products"><span>Products</span></a></li>
+    <li class="ui-menubar-menu ui-menubar-menu-1"><a href="http://example.com/services"><span>Services</span></a></li>
+    <li class="ui-menubar-menu ui-menubar-menu-1 ui-state-active ui-menubar-selected"><a href="http://example.com/about_us"><span>About Us</span></a>
+      <ul class="ui-menubar ui-menubar-2 ui-state-active ui-menubar-selected">
+        <li class="ui-menubar-menu ui-menubar-menu-2"><a href="http://example.com/about_us"><span>Overview</span></a></li>
+        <li class="ui-menubar-menu ui-menubar-menu-2 ui-state-active ui-menubar-selected"><a href="http://example.com/about_us/who_we_are"><span>Who We Are</span></a></li>
+        <li class="ui-menubar-menu ui-menubar-menu-2 ui-menubar-last"><a href="http://example.com/about_us/contact"><span>Contact Us</span></a></li>
+      </ul>
+    </li>
+    <li class="ir ui-menubar-menu ui-menubar-menu-1 ui-menubar-last"><a href="http://www.google.com"><span>Search!</span></a></li>
+  </ul>
+
+=== Caveat Emptor
+
+Remember one of the basic principles of programming: KISS.  There's no need to
+use this plugin if you're writing a very, very simple menubar.  The advantages
+of this helper are consistency, DRYness, and decreased complexity if you have
+lots of submenus.
+
+I wrote this plugin mostly as an educational/experimental piece, so I don't
+recommend using this in a production application, but rather a prototype.
+
+== Testing
+
+To test this plugin, the following gems must be installed:
+* plugin_test_helper[http://github.com/pluginaweek/plugin_test_helper]
+
+To run against a specific version of Rails:
+
+  rake test RAILS_FRAMEWORK_ROOT=/path/to/rails
+
+== Dependencies
+
+* Rails 2.0 or later

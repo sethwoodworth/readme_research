@@ -1,0 +1,17 @@
+Hoptoad Unresolved Errors Plugin
+=================================
+Created by [David Grandinetti](http://github.com/dbgrandi)
+
+Returns the total number of unresolved errors from a [Hoptoad](http://hoptoadapp.com) project.
+
+Dependencies
+------------
+Requires ActiveResource
+
+	sudo gem install activeresource
+
+Compatibility 
+-------------
+
+Works on Linux and OSX. 
+

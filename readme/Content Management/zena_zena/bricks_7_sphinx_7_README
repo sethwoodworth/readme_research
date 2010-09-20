@@ -1,0 +1,19 @@
+== Presentation
+
+Provides fulltext search through Sphinx.
+
+
+== Install
+
+Drop the folder into the "bricks" folder and install sphinx and thinking-sphinx:
+
+# install sphinx
+follow instructions: http://freelancing-god.github.com/ts/en/installing_sphinx.html
+
+# install thinking sphinx gem:
+> sudo gem install thinking-sphinx
+
+# if you want to use the delayed delta feature (you should on a big website), you also need
+> sudo gem install ts-delayed-delta
+
+# enable brick in config/bricks.yml

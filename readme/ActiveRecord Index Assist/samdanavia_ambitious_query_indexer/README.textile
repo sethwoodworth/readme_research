@@ -1,0 +1,79 @@
+h1. Ambitious Query Indexer
+
+Ambitious Query Indexer is a Rails plugin to identify database indexes that are missing. Rather than looking at tables and guessing what needs indexing, it will locate and run as many queries as it can find and suggest indexes that could be added based upon its findings.
+
+This plugin is still in beta; at the moment there are various queries that it doesn't understand and it could be better at finding methods in your application that run queries. That said, even now its recommendations should help your database load considerably.
+
+I'm really eager for feedback on this plugin. If you have any thoughts or ideas, please let me know.
+
+h2. Installation
+
+@script/plugin install git://github.com/samdanavia/ambitious_query_indexer.git@
+
+h3. Dependencies
+
+This plugin uses the 'multi' gem. Install with:
+
+@gem install multi@
+
+h2. Usage
+
+In the root of your Rails app, run the following:
+
+@rake ambitious_query_indexer:analyze@
+
+This plugin runs queries on your test database. Ensure that it is up-to-date ('rake db:migrate RAILS_ENV=test') and representative of your live schema for best results.
+
+h2. Testing
+
+Run the following from the root of your Rails app:
+
+@rake test:plugins PLUGIN=ambitious_query_indexer@
+	
+_*NB:* This plugin's tests create tables in your test database. Any tables created will be prefixed with 'aqi_test'. In the unlikely event that you have a table that follows this same convention, you may see it trashed in the test environment._
+
+h2. Upcoming features/enhancements
+
+h3. General
+
+* Rails 3 support
+* More-sensibly named rake tasks
+* Ability to pass individual finders or sql queries for index recommendations
+* Support for ambitious_model_loader and similar plugins
+* Statistics output - similar to rake stats
+* Support for databases other than MySQL
+* Other optimisation advice - common query smells etc
+* -Auto-generation of migrations-
+
+h3. SQL Optimisation
+
+Enhancements to the SQL optimisation engine:
+
+* Support for lazier queries - implicit joins and implicit table references ('field' rather than 'table.field')
+* Stronger support for conditionals - including FUNCTION() calls and references to other tables
+* Support for difficult-to-index operators such as LIKE and RLIKE
+* Support for HAVING
+* -Support for JOIN ON-
+* -Support for aliased tables (AS)-
+
+h3. Associations
+
+* has_many
+* has_many
+* has_and_belongs_to_many
+* has_one
+* -belongs_to-
+
+h3. Object Call location
+
+Enhancements to the code that deals with finding the methods that run queries:
+
+* Support for scopes within models
+* -Support for commented-out lines-
+
+
+h2. Feedback
+
+All feedback, bug reports and thoughts on this gratefully received.
+
+Copyright (c) 2009-10 Sam Phillips, released under the MIT license

@@ -1,0 +1,64 @@
+== Strip Control Chars
+
+At the lower end of the ASCII range are a few control characters that are
+generally innocent but useless. Often benign, they sometimes jump out and bite
+you when you're trying to do something simple like generate some XML.
+
+If you model doesn't need them, then remove them before they even make it into
+your database.
+
+=== Examples
+
+  class Product < ActiveRecord::Base
+    strip_control_chars!
+  end
+
+  class Product < ActiveRecord::Base
+    strip_control_chars!, :except => :title
+  end
+
+  class Product < ActiveRecord::Base
+    strip_control_chars!, :only => :description
+  end
+
+=== Installation
+
+1. On rails 2.3
+
+  * gem install strip_control_chars
+  * add the following to your environment.rb
+
+    config.gem 'strip_control_chars', version => "1.0"
+
+2. On rails 3
+
+  * gem install strip_control_chars
+  * add the following to your Gemfile
+
+    gem 'strip_control_chars', ">=2.0"
+
+=== Compatibility
+
+On rails 2.x you must use version 1.x of this gem. On rails 3.x you must use
+version 2.x of this gem.
+
+=== Caveats
+
+The translation is done with raw bytes. If you happen to be using anything other than
+UTF-8 in your models, you're likely to munge data.
+
+This also means it's almost certainly not ruby 1.9 compatible. Patches welcome.
+
+=== Credits
+
+This plugin is essentially a fork of the strip attributes plugin, released
+under the MIT License by Ryan McGeary.
+
+http://github.com/rmm5t/strip_attributes
+
+=== License
+
+Copyright (c) 2007-2008 Ryan McGeary released under the MIT license
+Copyright (c) 2009 James Healy released under the MIT license
+
+http://en.wikipedia.org/wiki/MIT_License

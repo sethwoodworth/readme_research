@@ -1,0 +1,15 @@
+TCP Socket State Plugin
+======================
+Created by [Eric Lindvall](http://twitter.com/lindvall)
+
+Overview
+------------
+
+Reports the status of TCP sockets (Established, listen, etc.).
+
+Dependencies
+------------
+
+Requires `netstat`.
+
+

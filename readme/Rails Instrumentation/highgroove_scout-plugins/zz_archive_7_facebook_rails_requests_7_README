@@ -1,0 +1,13 @@
+=== Process Usage Plugin
+Created by Highgroove Studios LLC
+http://www.highgroove.com
+
+== Summary
+
+An alternate version of the rails_requests plugin - also reports the percentage
+of requests that are from Facebook (actions that end in "_fb" or have a "fb" format)
+
+== Compatibility 
+
+Works on Linux and OSX.
+

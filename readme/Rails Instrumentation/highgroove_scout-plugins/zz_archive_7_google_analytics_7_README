@@ -1,0 +1,21 @@
+Google Analytics Plugin
+======================
+Created by [Highgroove Studios LLC](http://www.highgroove.com)
+
+Returns the number of page views and visits for the current day. 
+
+Code (and inspiration) taken and updated from [Burnalytics](http://www.eribium.org/blog/?p=51)
+
+Dependencies
+------------
+
+Requires the [hpricot library](http://code.whytheluckystiff.net/hpricot/):
+
+	sudo gem install hpricot
+
+Compatibility 
+-------------
+Works fully on Linux and OSX. 
+
+
+

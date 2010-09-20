@@ -1,0 +1,32 @@
+time-zone-warp
+=========
+
+If time zone support is critical to your app, it's often necessary to test
+various methods as if they were being run in a specific time zone.
+
+
+Installation
+============
+
+Gem:
+
+$ sudo gem install time-zone-warp
+
+Gem config in a Rails app. Add to test.rb:
+
+config.gem 'time-zone-warp', :lib => 'time_zone_warp'
+
+
+Example
+=======
+
+  class UserTest < Test::Unit::TestCase
+    test "code works in other time zones" do
+      pretend_zone_is "Mountain Time (US & Canada)" do
+        # assertions go here
+      end
+    end
+  end
+
+
+Copyright (c) 2009 Adeptware, Inc.  Released under the MIT license.

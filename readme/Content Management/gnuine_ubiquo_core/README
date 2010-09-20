@@ -1,0 +1,16 @@
+UbiquoCore
+==========
+
+Core system of the ubiquo cms framework. You can check the ubiquo website for additional information:
+
+http://www.ubiquo.me
+
+This plugin contains the basic common Ubiquo structure so that other plugins can be built on top of it. This includes:
+
+* Ubiquo::Config system
+* Core helpers
+* Ubiquo layout and styling elements
+* Main ruby/rails extensions
+* Navigation links and tabs system
+
+Copyright (c) 2009 International Product Design S.L. - gnuine (http://www.gnuine.com)

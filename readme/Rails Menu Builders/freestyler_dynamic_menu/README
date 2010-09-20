@@ -1,0 +1,18 @@
+DynamicMenu
+===========
+
+DynamicMenu is a scalable menu builder plugin for Ruby On Rails.
+This plugin supported for menu items parametering in running time; examination with (active?, enabled?, etc...) helper methods; parent menu item properties inheriting.
+
+Before use it see the examples below!
+
+Examples
+========
+
+Simple
+------
+
+Advanced
+--------
+
+Copyright (c) 2008 [Tamás Bene], released under the MIT license

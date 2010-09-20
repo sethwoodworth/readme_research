@@ -1,0 +1,28 @@
+Lighthouse Open Tickets Plugin
+=================================
+Created by [David Grandinetti](http://github.com/dbgrandi)
+
+Returns the total number of open tickets for a specific project in a Lighthouse account.
+
+Dependencies
+------------
+Requires an account at [Lighthouse](http://lighthouseapp.com).
+
+Requires the [lighthouse-api gem](http://github.com/Caged/lighthouse-api/tree/master):
+
+	gem sources -a http://gems.github.com
+	sudo gem install Caged-lighthouse-api
+	
+Usage Notes
+-----------
+
+The project id can be found in the URL for your project. It is *just* the number part of the url, not
+the project name abbreviation.
+
+The account name should just be your sub-domain, not the whole myproject.lighthouseapp.com.
+
+Compatibility 
+-------------
+
+Works on Linux and OSX. 
+

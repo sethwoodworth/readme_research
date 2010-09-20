@@ -1,0 +1,293 @@
+h1. StateFu
+
+h2. What is it?
+
+StateFu is another Ruby state machine.
+
+h2. What is a state machine?
+
+Finite state machines are a model for program behaviour; like
+object-oriented programming, they provide an abstract way to think
+about a domain.
+
+In a finite state machine, there are a number of discrete states. Only
+one state may be occupied at any given time (hence the "finite").
+
+States are linked together by events, and there are rules which govern
+when or how transitions between states can occur. Actions may be fired
+on entry to or exit from a state, or when a certain transition occurs.
+
+h2. Why is StateFu different to the other twenty state machines for Ruby?
+
+State machines are potentially a powerful way to simplify and
+structure a lot of problems. They can be used to:
+
+ * succinctly define the grammar of a networking protocol or a
+   configuration DSL
+
+ * clearly and compactly describe complex logic, which might otherwise
+   be difficult to understand by playing "follow the rabbit" through
+   methods thick with implementation details
+
+ * serialize and process multiple revisions of changing business rules
+
+ * provide an abstract representation of program or domain behaviour
+   which can be introspected, edited, queried and executed on the fly,
+   in a high-level and human-readable format
+
+ * provide a straightforward and easy way to record and validate
+   "status" information, especially when there are rules governing
+   when and how it can be updated
+
+ * reduce proliferation of classes and modules, or easily define and
+   control functionally related groups of objects, by defining
+   behaviours on interacting components of a state machine
+
+ * elegantly implement simple building blocks like stacks / queues,
+   parsers, schedulers, automata, etc
+
+StateFu was written from the ground up with one goal in mind: to be
+over-engineered. It is designed to make truly ambitious use of state
+machines not only viable, but strongly advantageous in many situations.
+
+It is designed in the very opposite vein to the intentional minimalism
+of most ruby state machine projects; it is tasked with taking on a
+great deal of complexity and functionality, and abstracting it behind
+a nice DSL, so that the code which *you* have to maintain is shorter and
+clearer.
+
+StateFu allows you to:
+
+ * give a class any number of machines
+
+ * define behaviours on state entry / exit; before, after or during
+   execution of a particular event; or before / after every transition
+   in a given machine
+
+ * give any object own its own private, "singleton" machines,
+   which are unique to that object and modifiable at runtime.
+
+ * create events with any number of origin or target states
+
+ * define and query guard conditions / transition requirements,
+  to establish rules about when a transition is valid
+
+ * use powerful reflection and logging capabilities to easily expose
+   and debug the operation of your machines
+
+ * automatically and unobtrusively define methods for querying each
+   state and event, and for firing transitions
+
+ * easily find out which transitions are valid at any given time
+
+ * generate descriptive, contextual messages when a transition is
+   invalid
+
+ * halt a transition during execution
+
+ * easily extend StateFu's DSL to match the problem domain
+
+ * fire transitions with a payload of arguments and program context,
+   which is available to guard conditions, event hooks, and
+   requirement messages when they are evaluated
+
+ * use a lovely, simple and flexible API which gives you plenty of
+   choices about how to describe your problem domain; choose (or
+   build) a programming style which suits the task at hand from an
+   expressive range of options
+
+ * store arbitrary meta-data on any component of StateFu - a simple
+   but extremely powerful tool for integration with almost anything.
+
+ * flexible and helpful logging out of the box - will use the Rails
+   logger if you're in a Rails project, or standalone logging to
+   STDOUT or a file. Configurable loglevel and message prefixes help
+   StateFu be a good citizen in a shared application log.
+
+ * automatically generate diagrams of state machines / workflows with graphviz
+
+ * use an ActiveRecord field for state persistence, or a regular
+   attribute - or use both, on the same class, for different
+   machines. If an appropriate ActiveRecord field exists for a
+   machine, it will be used. Otherwise, an attr_accessor will be used
+   (and created, if necessary).
+
+ * customising the persistence mechanism (eg to use a Rails session,
+   or a text file, or your choice of ORM) is usually as easy as
+   defining a getter and setter method for the persistence field, and
+   a rule about when to use it. If you want to use StateFu with a
+   persistence mechanism which is not yet supported, send me a message.
+
+ * StateFu is fast, lightweight and useful enough to use in any ruby
+   project - works with Rails but does not require it.
+
+h2. Still not sold?
+
+StateFu is forged from a reassuringly dense but unidentifiable metal
+which comes only from the rarest of meteorites, and it ticks when you
+hold it up to your ear.[1]
+
+It is elegant, powerful and transparent enough that you can use
+it to drive substantial parts of your application, and actually want
+to do so.
+
+It is designed as a library for authors, as well as users, of
+libraries: StateFu goes to great lengths to impose very few limits on
+your ability to introspect, manipulate and extend the core features.
+
+It is also delightfully elegant and easy to use for simple things:
+
+<pre><code>
+
+  class Document < ActiveRecord::Base
+    include StateFu
+
+    def update_rss
+      puts "new feed!"
+      # ... do something here
+    end
+
+    machine( :status ) do
+      state :draft do
+        event :publish, :to => :published
+      end
+
+      state :published do
+        on_entry :update_rss
+        requires :author  # a database column
+      end
+
+      event :delete, :from => :ALL, :to => :deleted do
+        execute :destroy
+      end
+
+      # save all states once transition is complete.
+      # this wants to be last, as it iterates over each state which is
+      # already defined.
+      states do
+        accepted { save! }
+      end
+    end
+  end
+
+  my_doc = Document.new
+
+  my_doc.status                          # returns a StateFu::Binding, which lets us access the 'Fu
+  my_doc.status.state     => 'draft'     # if this wasn't already a database column or attribute, an
+                                         # attribute has been created to keep track of the state
+  my_doc.status.name      => :draft      # the name of the current_state (defaults to the first defined)
+  my_doc.status.publish!                 # raised =>  StateFu::RequirementError: [:author]
+                                         # the author requirement prevented the transition
+  my_doc.status.name      => :draft      # see? still a draft.
+  my_doc.author = "Susan"                # so let's satisfy it ...
+  my_doc.publish!                        # and try again.
+  "new feed!"                            # aha - our event hook fires!
+  my_doc.status.name      => :published  # and the state has been updated.
+
+</code></pre>
+
+StateFu works with any modern Ruby ( 1.8.6, 1.8.7, and 1.9.1)
+
+h2. Getting started
+
+You can either clone the repository in the usual fashion (eg to
+yourapp/vendor/plugins/state-fu), or use StateFu as a gem.
+
+To install as a gem:
+
+<pre>
+<code>
+gem install davidlee-state-fu -s http://gems.github.com
+</code>
+</pre>
+
+To require it in your ruby project:
+
+<pre>
+<code>
+require 'rubygems'
+require 'state-fu'
+</code>
+</pre>
+
+To install the dependencies for running specs:
+
+<pre>
+<code>
+ sudo gem install rspec rr
+ rake             # run the specs
+ rake spec:doc    # generate specdocs
+ rake doc         # generate rdocs
+ rake build       # build the gem locally
+ rake install     # install it
+</code>
+</pre>
+
+Now you can simply <code>include StateFu</code> in any class you wish to make stateful.
+
+The spec/ and features/ folders are currently one of the best source
+of documentation. The documentation is gradually evolving to catch up
+with the features, but if you have any questions I'm happy to help you
+get started.
+
+If you have questions, feature request or ideas, please join the
+"google group":http://groups.google.com/group/state-fu or send me a
+message on GitHub.
+
+h3. A note about ActiveSupport
+
+StateFu will use ActiveSupport if it is already loaded. If not, it
+will load its own (heavily trimmed) 'lite' version.
+
+In most projects this will behave transparently, but it does mean that
+if you require StateFu *before* other libraries which
+require ActiveSupport (e.g. ActiveRecord), you may have to
+explicitly <code>require 'activesupport'</code> before loading the
+dependent libraries.
+
+So if you plan to use ActiveSupport in a stand-alone project with
+StateFu, you should require it before StateFu.
+
+
+h3. Addditional Resources
+
+Also see the "issue tracker":http://github.com/davidlee/state-fu/issues
+
+And the "build monitor":http://runcoderun.com/davidlee/state-fu/
+
+And the "RDoc":http://rdoc.info/projects/davidlee/state-fu
+
+
+h3. StateFu is not a complete BPM (Business Process Management) platform
+
+It's worth noting that StateFu is at it's core a state machine, which
+strives to be powerful enough to be able to drive many kinds of
+application behaviour.
+
+It is not, however, a classical workflow engine on par with Ruote. In
+StateFu the basic units with which "workflows" are built are states
+and events; Ruote takes a higher level view, dealing with processes
+and participants. As a result, it's capable of directly implementing
+these design patterns:
+
+http://openwferu.rubyforge.org/patterns.html
+
+Whereas StateFu cannot, for example, readily model forking / merging
+of processes (nor does it handles scheduling, process management, etc.
+
+The author of Ruote, the Ruby Workflow Engine, outlines the difference
+pretty clearly here:
+
+http://jmettraux.wordpress.com/2009/07/03/state-machine-workflow-engine/
+
+If your application can be described with StateFu, you'll likely find
+it simpler to get running and work with; if not, you may find Ruote,
+or a combination of the two, suits your needs perfectly.
+
+h3. Thanks
+
+ * dsturnbull, for patches
+
+ * lachie, benkimball for pointing out README bugs / typos
+
+ * Ryan Allen for his original Workflow library

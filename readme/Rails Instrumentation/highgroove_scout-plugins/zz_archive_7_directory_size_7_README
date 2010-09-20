@@ -1,0 +1,11 @@
+Directory Size Plugin
+======================
+Created by [Highgroove Studios LLC](http://www.highgroove.com)
+
+Generates an alert if the directory size is greater than the amount specified with the 'Max Size' option.
+
+Compatibility
+-------------
+
+Works on Mac OSX and Linux
+

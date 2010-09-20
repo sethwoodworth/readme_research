@@ -1,0 +1,8 @@
+=== Directory Size Plugin
+Created by Highgroove Studios LLC
+http://www.highgroove.com
+
+== Compatibility 
+
+Works fully on Linux. Fails on OSX - top -n1 doesn't output and quit, so might cause major errors.
+

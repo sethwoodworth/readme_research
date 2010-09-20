@@ -1,0 +1,30 @@
+== DESCRIPTION
+
+#{project_name} is a TODO that TODO.
+
+=== Features
+
+* Does TODO.
+
+* Reduces TODO.
+
+* Lets you TODO.
+
+* Composed of TODO lines of code.
+
+=== Resources
+
+Project website::
+<%= @proj_home_url = #{library_name}::WEBSITE %>
+
+Announcements feed::
+<%= @ann_feed_url = File.join(@proj_home_url, 'ann.xml') %>
+
+API documentation::
+<%= @api_docs_url = File.join(@proj_home_url, 'api/') %>
+
+Source code (browse online, download, or checkout)::
+<%= @code_repo_url = 'http://github.com/TODO/#{package_name}' %>
+
+Issue tracker (report bugs, request features, get help)::
+<%= @bug_track_url = File.join(@code_repo_url, 'issues') %>

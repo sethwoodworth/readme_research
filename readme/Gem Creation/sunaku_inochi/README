@@ -1,0 +1,30 @@
+== DESCRIPTION
+
+Inochi is an infrastructure that helps you create, test, document, package,
+publish, and announce your <<Ruby>> projects.
+
+=== Features
+
+* Provides a comprehensive help manual that is written in <<eRuby>> over
+  <<AsciiDoc>> and is rendered into a Web page and a UNIX manual page.
+
+* Announces project releases on <<RAA>>, <<ruby-talk>>, and via RSS feed.
+
+* Stores project information in a single Ruby source file.
+
+=== Resources
+
+Project website::
+<%= @proj_home_url = Inochi::WEBSITE %>
+
+Announcements feed::
+<%= @ann_feed_url = File.join(@proj_home_url, 'ann.xml') %>
+
+API documentation::
+<%= @api_docs_url = File.join(@proj_home_url, 'api/') %>
+
+Source code (browse online, download, or checkout)::
+<%= @code_repo_url = 'http://github.com/sunaku/inochi' %>
+
+Issue tracker (report bugs, request features, get help)::
+<%= @bug_track_url = File.join(@code_repo_url, 'issues') %>

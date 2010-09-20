@@ -1,0 +1,156 @@
+= Wrest 1.0.0.beta5
+
+(c) Copyright 2009-2010 {Sidu Ponnappa}[http://blog.sidu.in]. All Rights Reserved.
+
+Wrest is a ruby REST/HTTP client library which
+
+* Allows allows you to quickly build object oriented wrappers around any web service 
+* Designed to be used as a library, not just a command line REST client (fewer class/static methods, more object oriented)
+* Is spec driven, strongly favours immutable objects and avoids class methods and setters making it better suited for use as a library, especially in multi-threaded environments 
+* Runs on Ruby 1.8, Ruby 1.9.2, JRuby and Rubinius with MacRuby and IronRuby support on the way
+* Provides convenient HTTP wrappers, redirect handling, serialisation and deserialisation with response caching in the works
+* Supports using either Net::HTTP or libcurl as the underlying HTTP library
+
+To receive notifications whenever new features are added to Wrest, please subscribe to my {twitter feed}[http://twitter.com/ponnappa].
+
+== Examples
+
+For Facebook, Twitter, Delicious, GitHub and other API examples, see http://github.com/kaiwren/wrest/tree/master/examples
+
+=== Basic Http Calls
+
+==== GET
+
+* Basic API calls
+  
+    'http://twitter.com/statuses/public_timeline.json'.to_uri.get.deserialise  # works with json and xml out of the box
+
+    'http://twitter.com/statuses/public_timeline.xml'.to_uri.get.deserialise   # see lib/wrest/components/translators to add other formats
+* Timeout support
+  
+    'http://twitter.com/statuses/public_timeline.json'.to_uri.get(:timeout => 5).body
+* Redirect support
+  
+    'http://google.com'.to_uri(:follow_redirects => false).get
+  
+    'http://google.com'.to_uri(:follow_redirects_limit => 1).get
+* More complex request with parameters and a custom deserialiser
+  
+    'http://search.yahooapis.com/NewsSearchService/V1/newsSearch'.to_uri.get(
+                  :appid  => 'YahooDemo', 
+                  :output => 'xml',
+                  :query  => 'India',
+                  :results=> '3',
+                  :start  => '1'
+                ).deserialise_using(
+                  Wrest::Translators::Xml
+                )
+* Basic HTTP auth and URI extensions using Wrest::Uri#[]
+  
+    base_uri = 'https://api.del.icio.us/v1'.to_uri(:username => 'kaiwren', :password => 'fupupp1es')
+    bookmarks = base_uri['/posts/get'].get.deserialise
+
+==== POST
+
+* Regular, vanilla Post with a body and headers
+  
+    'http://my.api.com'.to_uri.post('YAML encoded body', 'Content-Type' => 'text/x-yaml')  
+* Form encoded post
+    
+    'https://api.del.icio.us/v1/posts/add'.to_uri(
+             :username => 'kaiwren', :password => 'fupupp1es'
+          ).post_form(
+             :url => 'http://blog.sidu.in/search/label/ruby',
+             :description => 'The Ruby related posts on my blog!',
+             :extended => "All posts tagged with 'ruby'",
+             :tags => 'ruby hacking'
+          )
+* Multipart posts
+   
+   'http://imgur.com/api/upload.xml'.to_uri.post_multipart(
+     :image => UploadIO.new(File.open(file_path), "image/png", file_path), 
+     :key => imgur_key
+    ).deserialise
+
+==== DELETE
+
+To delete a resource:
+
+ 'https://api.del.icio.us/v1/posts/delete'.to_uri(
+                                              :username => 'kaiwren',
+                                              :password => 'fupupp1es'
+                                            ).delete(
+                                              :url => 'http://c2.com'
+                                            )
+ 
+
+==== OPTIONS
+
+To find out what actions are permitted on a URI:
+
+ 'http://www.yahoo.com'.to_uri.options.headers['allow']
+
+
+=== Other useful stuff
+
+Allows any class to hold an attributes hash, somewhat like ActiveResource. It also supports several extensions to this base fuctionality such as support for typecasting attribute values. See examples/twitter.rb and examples/wow_realm_status.rb for more samples.
+
+Example:
+
+ class Demon
+   include Wrest::Components::Container
+
+   always_has       :id
+   typecast         :age          =>  as_integer,
+                    :chi          =>  lambda{|chi| Chi.new(chi)}
+
+   alias_accessors  :chi => :energy                  
+ end
+
+ kai_wren = Demon.new('id' => '1', 'age' => '1500', 'chi' => '1024', 'teacher' => 'Viss')
+ kai_wren.id       # => '1'
+ kai_wren.age      # => 1500
+ kai_wren.chi      # => #<Chi:0x113af8c @count="1024">
+ kai_wren.energy   # => #<Chi:0x113af8c @count="1024">
+ kai_wren.teacher  # => 'Viss'
+
+=== Logging
+
+The Wrest logger can be set and accessed through Wrest.logger and is configured by default to log to STDOUT. If you're using Wrest in a Rails application, you can configure logging by adding a config/initializers/wrest.rb file with the following contents :
+  Wrest.logger = ActiveRecord::Base.logger
+
+=== Build
+
+Standard options are available and can be listed using <tt>rake -T</tt>. Use rake:rcov for coverage and rake:rdoc to generate documentation. The link to the continuous integration build is over at the C42 Engineering {open source}[http://c42.in/open_source] page.
+
+== Documentation
+
+Wrest RDocs can be found at http://wrest.rubyforge.org
+
+== Roadmap
+
+Features that are planned, in progress or already implemented are documented in the {CHANGELOG}[http://github.com/kaiwren/wrest/tree/master/CHANGELOG] starting from version 0.0.8.
+
+== Installation
+
+The source is available at git://github.com/kaiwren/wrest.git
+
+To install the Wrest gem, do <tt>(sudo) gem install wrest --pre</tt>.
+
+Wrest is currently available as a gem for for Ruby and JRuby.
+
+=== Shell
+
+You can launch the interactive Wrest shell by running bin/wrest if you have the source or invoking <tt>wrest</tt> from your prompt if you've installed the gem.
+  $ wrest
+  >> y 'http://twitter.com/statuses/public_timeline.json'.to_uri(:timeout => 5).get.deserialise
+  
+== Contributors
+ 
+* Sidu Ponnappa : {kaiwren}[http://github.com/kaiwren]
+* Niranjan Paranjape : {achamian}[http://github.com/achamian]
+* Aakash Dharmadhkari : {aakashd}[http://github.com/aakashd]
+* Srushti : {srushti}[http://github.com/srushti]
+* Preethi Ramdev : {preethiramdev}[http://github.com/preethiramdev]
+* Nikhil Vallishayee : {nikhilvallishayee}[http://github.com/nikhilvallishayee]
+* Jacques Crocker : {railsjedi}[http://github.com/railsjedi]

@@ -1,0 +1,201 @@
+= EnumerateIt - Ruby Enumerations
+
+Author: Cássio Marques - cassiommc at gmail
+
+== Description
+
+Ok, I know there are a lot of different solutions to this problem. But none of them solved my problem,
+so here's EnumerateIt. I needed to build a Rails application around a legacy database and this database was
+filled with those small, unchangeable tables used to create foreign key constraints everywhere. 
+
+=== For example:
+
+	 Table "public.relationshipstatus"
+	Column     |     Type      | Modifiers 
+	-------------+---------------+-----------
+	 code        | character(1)  | not null
+	 description | character(11) | 
+	Indexes:
+		"relationshipstatus_pkey" PRIMARY KEY, btree (code)
+
+	select * from relationshipstatus;
+	code   |  description  
+	-------+--------------
+	1      | Single   
+	2      | Married     
+	3      | Widow
+	4      | Divorced 
+
+
+And then I had things like a people table with a 'relationship_status' column with a foreign key 
+pointing to the relationshipstatus table.
+
+While this is a good thing from the database normalization perspective, managing this values in
+my tests was very hard. Doing database joins just to get the description of some value was absurd. 
+And, more than this, referencing them in my code using magic numbers was terrible and meaningless: 
+What does it mean when we say that someone or something is '2'?
+
+Enter EnumerateIt.
+
+== Creating enumerations
+
+Enumerations are created as models, but you can put then anywhere in your application. In Rails 
+applications, I put them inside models/. 
+
+   class RelationshipStatus < EnumerateIt::Base
+     associate_values(
+       :single   => [1, 'Single'],
+       :married  => [2, 'Married'],
+       :widow    => [3, 'Widow'],
+       :divorced => [4, 'Divorced']
+     )
+   end
+
+This will create some nice stuff:
+
+* Each enumeration's value will turn into a constant:
+
+   RelationshipsStatus::SINGLE # returns 1
+   RelationshipStatus::MARRIED # returns 2 and so on...
+
+* You can retrieve a list with all the enumeration codes:
+
+   RelationshipStatus.list # [1,2,3,4]
+
+* You can get an array of options, ready to use with the 'select', 'select_tag', etc family of Rails helpers.
+
+   RelationshipStatus.to_a # [["Divorced", 4],["Married", 2],["Single", 1],["Widow", 3]]
+
+* You can manipulate the hash used to create the enumeration:
+
+   RelationshipStatus.enumeration # returns the exact hash used to define the enumeration
+
+== Using enumerations
+
+The cool part is that you can use these enumerations with any class, be it an ActiveRecord instance
+or not.
+
+   class Person
+     include EnumerateIt
+     attr_accessor :relationship_status
+
+     has_enumeration_for :relationship_status, :with => RelationshipStatus
+   end
+
+The :with option is not required. If you ommit it, EnumerateIt will try to load an enumeration class based on the camelized attribute name. 
+
+This will create: 
+
+* A humanized description for the values of the enumerated attribute:
+
+   p = Person.new
+   p.relationship_status = RelationshipStatus::DIVORCED
+   p.relationsip_status_humanize # => 'Divorced'
+
+* If you don't supply a humanized string to represent an option, EnumerateIt will use a 'humanized' version of the hash's key to humanize the attribute's value:
+
+   class RelationshipStatus < EnumerateIt::Base
+     associate_values(
+       :married => 1,
+       :single => 2
+     ) 
+   end
+
+   p = Person.new
+   p.relationship_status = RelationshipStatus::MARRIED
+   p.relationship_status_humanize # => 'Married'
+
+* If you pass the :create_helpers option as 'true', it will create a helper method for each enumeration option (this option defaults to false):
+
+   class Person < ActiveRecord::Base
+     has_enumeration_for :relationship_status, :with => RelationshipStatus, :create_helpers => true
+   end
+
+   p = Person.new
+   p.relationship_status = RelationshipStatus::MARRIED
+   p.married? #=> true
+   p.divorced? #=> false
+
+* If your class can manage validations and responds to :validates_inclusion_of, it will create this validation:
+
+   class Person < ActiveRecord::Base
+     has_enumeration_for :relationship_status, :with => RelationshipStatus
+   end
+
+   p = Person.new :relationship_status => 6 # => there is no '6' value in the enumeration
+   p.valid? # => false
+   p.errors[:relationship_status] # => "is not included in the list"
+
+Remember that in Rails 3 you can add validations to any kind of class and not only to those derived from 
+ActiveRecord::Base.
+
+== I18n
+
+I18n lookup is provided on both '_humanized' and 'Enumeration#to_a' methods, given the hash key is a Symbol. The I18n strings are
+located on enumerations.'enumeration_name'.'key' :
+
+  class RelationshipStatus < EnumerateIt::Base
+   associate_values(
+     :married => 1,
+     :single => 2,
+     :divorced => [3, 'He's divorced']
+   )
+  end
+
+  # your locale file
+  pt:
+    enumerations:
+      relationship_status:
+        single: Casado
+  
+  p = Person.new
+  p.relationship_status = RelationshipStatus::MARRIED
+  p.relationship_status_humanize # => 'Casado' 
+  
+  p.relationship_status = RelationshipStatus::SINGLE
+  p.relationship_status_humanize # => 'Single' => nonexistent key 
+  
+  p.relationship_status = RelationshipStatus::DIVORCED
+  p.relationship_status_humanize # => 'He's divorced' => uses the provided string 
+
+== Installation
+
+  gem install enumerate_it
+
+== Using with Rails
+
+* Create an initializer with the following code:
+
+  ActiveRecord::Base.send :include, EnumerateIt 
+
+* Add the 'enumerate_it' gem as a dependency in your environment.rb (Rails 2.3.x) or Gemfile (if you're using Bundler)
+
+== Ruby 1.9
+
+EnumerateIt is fully compatible with Ruby 1.9.1 (all tests pass)
+
+== Why did you reinvent the wheel?
+
+There are other similar solutions to the problem out there, but I could not find one that
+worked both with strings and integers as the enumerations' codes. I had both situations in 
+my legacy database. 
+
+== Why defining enumerations outside the class that use it?
+
+* I think it's cleaner.
+* You can add behaviour to the enumeration class.
+* You can reuse the enumeration inside other classes.
+
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+Copyright (c) 2010 Cássio Marques. See LICENSE for details.

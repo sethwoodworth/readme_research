@@ -1,0 +1,153 @@
+= eschaton => It's like nutella on your sarmie
+
+Helps with writing google map mashups in Rails by providing a language that is as natural as possible.
+
+== Get it and Get going...
+
+Install the plugin:
+
+  $ script/plugin install git://github.com/yawningman/eschaton.git
+
+Generate a map, look at the files the generator created and play a bit:
+
+  $ script/generate map
+  
+Put some test code in your <b><i>app/helpers/map_helper.rb</i></b> and *_play_*!
+Visit the map at http://localhost:3000/map or wherever your server runs.
+
+== Enough talk, lets code.
+
+Eschaton code can be placed in a view helper, contained within the run_map_script methods' block and it will happily return javascript to you.
+
+  map = Google::Map.new(:center => {:latitude => -33.947, :longitude => 18.462},
+                        :controls => [:large_map_3D, :map_type])
+  
+  # A simple map click
+  map.click do |script, location|
+    marker = map.add_marker :location => location
+    marker.open_info_window :html => 'Awesome, you added a marker!'
+  end
+
+  # A simple map click using a partial as info window content
+  map.click do |script, location|
+    marker = map.add_marker :location => location
+    marker.open_info_window :partial => 'location/show'
+  end
+
+...
+
+  # Create a satellite map, zoomed at 16.
+  map = Google::Map.new(:controls => [:small_map, :map_type],
+                        :type => :satellite, :zoom => 16)
+
+  # Collect some markers 
+  markers = [[-34.2023, 18.3794], [-34.2029, 18.3797], [-34.2022, 18.3811], 
+             [-34.2016, 18.3829], [-34.2006, 18.3849]].collect do |location|
+               map.add_marker :location => location
+            end
+
+  # ... and draw a line in between them
+  map.add_line :between_markers => markers, :tooltip => {:text => "Short Hike I do everyday with my dog"}
+
+...  
+  map = Google::Map.new(:center => [-34.2023, 18.3794], 
+                        :controls => [:small_map, :map_type],
+                        :type => :satellite, 
+                        :zoom => 18)  
+  
+  # Draw a polygon, yellow with a green border ..
+  map.add_polygon :vertices => [[-34.2023, 18.3794], [-34.2029, 18.3797], [-34.2022, 18.3811]], 
+                  :fill_colour => 'yellow', :border_colour => 'green'  
+
+...
+  
+  # A draggable marker that talks when its being dragged and dropped
+  marker = map.add_marker :location => {:latitude => -33.947, :longitude => 18.462},
+                          :tooltip => {:text => "Drag me", :show => :always},
+                          :draggable => true
+
+  marker.when_being_dragged do
+    marker.update_tooltip :text => "Dragging..."
+  end
+
+  marker.when_dropped do |script, drop_location|
+    marker.update_tooltip :text => "Dropped..."
+    marker.open_info_window :html => "Yes, I was getting tired of flying..."
+  end
+
+Say you want to show your friends how you would hop across a crater on Mars.
+We also want to include the google search bar, incase we want to sight see whilst on Mars.
+
+  map = Google::Map.new(:controls => [:small_map, :map_type], :type => :mars_elevation,
+                        :zoom => 6)
+
+  map.enable_google_bar! # For sight seeing
+
+  hops = [[-0.252, 14.414], [-0.977, 15.446], [-1.735, 16.094],
+          [-2.679, 16.171], [-4.346, 16.600], [-4.598, 17.116],
+          [-6.271, 19.379]]
+
+  hops.each do |location|                  
+    tooltip_text = if location == hops.first
+                     'Start here!'
+                   elsif location == hops.last
+                     'End here!'
+                   else
+                     'Hop'
+                   end
+
+    marker = map.add_marker :location => location, :tooltip => {:text => tooltip_text, :show => :always}
+    marker.click do
+      marker.open_info_window :html => "Its really hot in this crater!"
+    end
+  end
+
+Both Hashes and Arrays can represent a Location, so use which ever form you prefer.
+
+  {:latitude => -33.947, :longitude => 18.462} == [-33.947, 18.462]
+
+Checkout the online[http://rdoc.info/github/yawningman/eschaton/master/file/README.rdoc] docs for more on each mapping objects possibilities.
+
+== FAQ
+
+
+==== The google maps api is not completely covered and I don't see a method in the docs that I want to use, what's the deal?
+
+If a method is not defined on a mapping object, eschaton will translate the method call and its arguments into the javascript equivalent.
+
+For example Google::Map#enable_google_bar is not defined but when you call it:
+  
+  map.enable_google_bar # => Outputs 'map.enableGoogleBar();'
+  
+  # You can also use exclamations
+  map.enable_google_bar! # => Outputs 'map.enableGoogleBar();'  
+
+As another example, Google::Map#pan_to is not defined but it will be translated for you:
+
+  location = Google::Location.new(:latitude => 18, :longitude => 34)
+  map.pan_to location # Outputs => 'map.panTo(new GLatLng(18, 34));'
+
+The majority of methods are simply translated so that eschaton doesn't need to cover the entire api.
+If you think a particular method is being translated incorrectly, let us know[http://github.com/yawningman/eschaton/issues] about it.
+
+==== How exactly does eschaton translate method calls from Ruby to Javascript?
+  
+Like this:
+
+  map.zoom = 11   # => 'setZoom(11)'
+  map.set_zoom(1) # => 'setZoom(11)'
+  
+  marker.update_with_hash({:name => 'yawningman', :project => 'eschaton'}) # => map.updateWithHash({"name": "yawningman", "project": "eschaton"});
+
+  map.update_with_array(['yawningman', 'eschaton', 33]) # => map.updateWithArray(["yawningman", "eschaton", 33]);
+
+  map.update_with_string('yawningman') # => map.updateWithString("yawningman");
+  
+  map.enable_google_bar  #=> 'map.enableGoogleBar();'
+  map.enable_google_bar! #=> 'map.enableGoogleBar();'  
+
+and so forth and so on
+
+==== Please fork
+
+Forking of eschaton is encouraged, so it can be more distributed. If you are keen on the plugin, create a fork for yourself today and help distribute code!

@@ -13,7 +13,7 @@ def find_readmes(list):
                 readme_file = row[2:-43]
                 url = 'http://github.com/' + r[1] + '/raw/master/' + readme_file
                 r_me = urllib.urlopen(url).read()
-                f = open('./readme/' + cat + '/' + proj + '/' + readme_file, 'w')
+                f = open('./readme/' + cat + '/' + proj + '/' + re.sub('/', '_7_', readme_file), 'w')
                 f.write(r_me)
                 f.close()
             

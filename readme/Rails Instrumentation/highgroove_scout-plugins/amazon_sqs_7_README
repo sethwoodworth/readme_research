@@ -1,0 +1,19 @@
+Amazon Simple Queue Service Plugin
+==================================
+Created by [David Grandinetti](http://github.com/dbgrandi)
+
+Generates an alert if an Amazon SQS queue has more than 'Max Size' items.
+
+Dependencies
+------------
+Requires the [right_aws gem](http://)
+
+Requires the [lighthouse-api gem](http://rightaws.rubyforge.org/right_aws_gem_doc/):
+
+	sudo gem install right_aws
+
+Compatibility
+-------------
+
+Works on Linux and Mac OS X
+

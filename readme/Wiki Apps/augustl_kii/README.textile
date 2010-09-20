@@ -1,0 +1,9 @@
+h2. Kii
+
+A Rails powered wiki.
+
+The overall goal of Kii is to be a wiki with a modern user experience, and have a sensible code-base that's easy to work with for developers.
+
+h2. More info
+
+You can find more information about Kii on it's homepage, "http://kiiproject.org/":http://kiiproject.org/.

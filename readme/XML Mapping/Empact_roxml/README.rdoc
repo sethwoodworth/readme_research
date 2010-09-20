@@ -1,0 +1,195 @@
+ROXML Ruby Object to XML mapping library.
+
+For more information visit:
+
+    http://rdoc.info/projects/Empact/roxml
+    http://empact.github.com/roxml/
+    http://rubyforge.org/projects/roxml/
+
+Please submit bugs here:
+
+    http://github.com/Empact/roxml/issues
+
+
+=ROXML is of, by, and for all of us
+
+I've taken a lead role on ROXML these past months, but unfortunately I, Ben Woosley (Empact), am unable to continue to maintain ROXML at this time, as it no longer aligns with my other interests & efforts.  While I would very much like to fix the bugs listed on the github issues page, I'm simply not the person to do it, given my other concerns.
+
+But don't be mistaken, the library covers most cases very well, and is on the better-tested side of the spectrum (some 353 examples, all green as of this writing).
+
+If you run into a problem with ROXML, *please* take advantage of those tests, and github, by rolling up your sleeves and making a fix!  Your fellow programmers, myself included, will appreciate you for it.
+
+=Quick Start Guide
+
+This is a short usage example. See ROXML::ClassMethods::Declarations and packaged test cases for more information.
+
+==Basic Mapping
+
+Consider an XML document representing a Library containing a number of Books. You
+can map this structure to Ruby classes that provide addition useful behavior. With
+ROXML, you can annotate the Ruby classes as follows:
+
+  class Book
+    include ROXML
+
+    xml_accessor :isbn, :from => "@ISBN" # attribute with name 'ISBN'
+    xml_accessor :title
+    xml_accessor :description, :cdata => true  # text node with cdata protection
+    xml_accessor :author
+  end
+
+  class Library
+    include ROXML
+
+    xml_accessor :name, :from => "NAME", :cdata => true
+    xml_accessor :books, :as => [Book] # by default roxml searches for books for in <book> child nodes, then, if none are present, in ./books/book children
+  end
+
+To create a library and put a number of books in it we could run the following code:
+
+  book = Book.new
+  book.isbn = "0201710897"
+  book.title = "The PickAxe"
+  book.description = "Best Ruby book out there!"
+  book.author = "David Thomas, Andrew Hunt, Dave Thomas"
+
+  lib = Library.new
+  lib.name = "Favorite Books"
+  lib.books = [book]
+
+To save this information to an XML file:
+
+  doc = Nokogiri::XML::Document.new
+  doc.root = lib.to_xml
+  open("library.xml", 'w') do |file|
+    file << doc.serialize
+  end
+
+or
+
+  doc = LibXML::XML::Document.new
+  doc.root = lib.to_xml
+  doc.save("library.xml")
+
+To later populate the library object from the XML file:
+
+  lib = Library.from_xml(File.read("library.xml"))
+
+Similarly, to do a one-to-one mapping between XML objects, such as book and publisher,
+you would add a reference to another ROXML class. For example:
+
+  <book isbn="0974514055">
+    <title>Programming Ruby - 2nd Edition</title>
+    <description>Second edition of the great book.</description>
+    <publisher>
+      <name>Pragmatic Bookshelf</name>
+    </publisher>
+  </book>
+
+can be mapped using the following code:
+
+  class Publisher
+    include ROXML
+
+    xml_accessor :name
+
+    # other important functionality
+  end
+
+  class BookWithPublisher
+    include ROXML
+
+    xml_name 'book'
+    xml_reader :publisher, :as => Publisher
+
+    #  or, alternatively, if no class is needed to hang functionality on:
+    # xml_reader :publisher, :from => 'name', :in => 'publisher'
+  end
+
+Note: In the above example, _xml_name_ annotation tells ROXML to set the element
+name to "book" for mapping to XML. The default is XML element name is the class name in lowercase; "bookwithpublisher"
+in this case.
+
+=== Namespace Support
+
+Namespaced nodes are supported via the xml_namespace and xml_namespaces declarations and the :from and :namespace attr options.  See spec/xml/namespace_spec.rb for usage.
+
+Note that ROXML does not currently support outputting namespaced nodes.  This is planned for a future version.
+
+== Manipulation
+
+Extending the above examples, say you want to parse a book's page count and have it available as an Integer.
+In such a case, you can extend any object with a block to manipulate it's value at parse time.  For example:
+
+  class Dog
+    include ROXML
+
+    xml_reader(:age, :from => '@human_years', :as => Integer) {|years| years * 7 }
+  end
+
+The result of the block above is stored, rather than the actual value parsed from the document.
+
+== Construction
+
+Object life-cycle is as follows: .from_xml is called with a first argument representing the xml
+in file, string, or path form, and with optional initialization_args following.
+
+Firt .new and thus #initialize, is called with those same initialization_args, or no args if none
+are present.  Then the object is populated with the attribute values from xml.  Then the
+#after_parse callback is called, with no arguments.
+
+In #after_parse you can ensure that your object initialization is complete, including initialization which
+requires more than one variable in concert.
+
+E.g.:
+
+  class Measurement
+    include ROXML
+
+    xml_reader :units, :from => :attr
+    xml_reader :value, :from => :content
+
+    def initialize(value = 0, units = 'meters')
+      to_metric
+    end
+
+  private
+    def after_parse
+      # xml attributes of self are already valid
+      to_metric
+    end
+
+    def to_metric
+      # translate units & value into metric, for example
+    end
+  end
+
+One important use of this approach is to make ROXML object which may or may not include an xml backing,
+which may be used via _new_ construction as well as _from_xml_ construction.
+
+== Selecting a parser
+
+By default, ROXML will use Nokogiri if it is available, followed by LibXML.  If you'd like to
+explicitly require one or the other, you may do the following:
+
+  module ROXML
+    XML_PARSER = 'nokogiri' # or 'libxml'
+  end
+  require 'roxml'
+
+For more information on available annotations, see ROXML::ClassMethods::Declarations
+
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add specs for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but
+   bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+Copyright (c) 2004-2009 Ben Woosley, Zak Mandhro and Anders Engstrom. See LICENSE for details.

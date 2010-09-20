@@ -1,0 +1,42 @@
+Yahoo! Total Entries Count Plugin
+=================================
+Created by [Highgroove Studios LLC](http://www.highgroove.com)
+
+Returns the total number of entries for each of the provided search terms. Separate multiple terms with a ",". 
+
+Dependencies
+------------
+Requires the [hpricot library](http://code.whytheluckystiff.net/hpricot/):
+
+	sudo gem install hpricot
+	
+Usage Notes
+-----------
+
+To return the total number of entries for each of these two terms:
+
+* Bill Clinton
+* George Bush
+
+Specify this as the term: "Bill Clinton", "George Bush"
+
+Which return 2 fields in the report:
+
+* Bill Clinton: 854,554,545
+* George Bush: 765,345,434
+
+If you want all results that match those terms:
+
+Term: "Bill Clinton" OR "George Bush"
+
+Total Entries: 854,554,545 + 765,345,434
+
+Code (and inspiration) taken and updated from:
+
+http://kfahlgren.com/blog/2005/12/10/why-does-the-google-search-api-suck/
+
+Compatibility 
+-------------
+
+Works on Linux and OSX. 
+

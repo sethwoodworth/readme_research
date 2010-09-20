@@ -1,0 +1,26 @@
+= ruby-which
+
+by Pistos
+http://github.com/Pistos/ruby-which
+
+For those times when you don't know which version of a library you're
+require-ing, or what path on your system it's coming from.  Returns the full
+library path if the given library is found in the $LOAD_PATH.
+
+"you need organization..." -- manveru
+
+== Installation
+
+    gem install --source http://gems.github.com Pistos-ruby-which
+
+== Example usage:
+
+    require 'rubygems'
+    require 'ruby-which'
+    puts Which.which( 'm4dbi' )   #=> /usr/lib/ruby/gems/1.8/gems/m4dbi-0.6.2/lib/m4dbi.rb
+
+Or from your shell:
+
+    rwhich m4dbi
+    # Outputs: /usr/lib/ruby/gems/1.8/gems/m4dbi-0.6.2/lib/m4dbi.rb
+

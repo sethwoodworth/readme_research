@@ -1,0 +1,23 @@
+~~~(^._.^)~~~ Bats!
+
+A micro-framework.
+
+Bats! implements an easy to use router on top of Rack for handling REST
+requests.  This makes getting an app up and running ridiculously easy.
+
+Bats! stays out of your way.  It doesn't ask you to use any particular
+development methodology, templating framework, or other such tom-foolery.
+
+Example usage:
+
+# config.ru
+
+require 'bats'
+
+class App < Bats
+	get '/' do
+		s( 200 ).b 'Flap flap flap'
+	end
+end
+
+run App

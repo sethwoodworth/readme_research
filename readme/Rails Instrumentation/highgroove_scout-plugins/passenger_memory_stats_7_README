@@ -1,0 +1,21 @@
+Passenger Memory Stats
+======================
+
+Created by [Highgroove Studios LLC](http://www.highgroove.com)
+
+Compatibility 
+-------------
+
+Works on Linux.
+
+Sudo Usage
+----------
+
+The passenger-memory-stats program recommends that you run it would super user privileges to gain more information.  This plugin is usable without the extra access rights, but you will need to add them if you want the full details.
+
+It's important to note though that it is not safe for you to transmit your super user password to us.  You will need to address this access issue on your server.
+
+Our recommended procedure to handle this is:
+
+1. Edit the sudoers file on your server to allow the user that runs the scout client listed in your crontab to be able to run passenger-memory-stats without a password
+2. Login into Scout and edit your plugin settings to add sudo in front of the command name

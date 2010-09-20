@@ -1,0 +1,179 @@
+NAME
+
+  tagz.rb
+
+SYNOPSIS
+
+  require Tagz
+
+  include Tagz.globally
+
+  a_(:href => "/foo"){ "bar" }  #=>  <a href="/foo">bar</a> 
+
+DESCRIPTION
+
+  tagz.rb is generates html, xml, or any sgml variant like a small ninja
+  running across the backs of a herd of giraffes swatting of heads like a
+  mark-up weedwacker.  weighing in at less than 300 lines of code tagz.rb adds
+  an html/xml/sgml syntax to ruby that is both unobtrusive, safe, and available
+  globally to objects without the need for any builder or superfluous objects.
+  tagz.rb is designed for applications that generate html to be able to do so
+  easily in any context without heavyweight syntax or scoping issues, like a
+  ninja sword through butter.
+
+FEATURES
+
+  - use as a library or mixin
+
+  - simple, clean and consistent mark-up that is easy to visually
+    distinguish from other ruby methods
+
+  - auto-compatibility with rails/actionview
+
+  - ability to independently open and close tagz in markup
+
+  - intelligent auto-escaping of both attributes and content for both html
+    and xml
+
+  - validate your html/xml with 'ruby -c' syntax check
+
+  - generally bitchin
+
+  - no lame method_missing approach that prevents tagz like 'type' from being
+    generated
+
+RAILS
+  
+  in config/environment.rb
+
+    require 'tagz'
+
+  in a helper
+
+    def list_of_users
+      ul_(:class => 'users'){
+        @users.each{|user| li_{ user }}
+      }
+    end
+
+  in a view
+
+    table_{ 
+      rows.each do |row|
+        tr_{
+          row.each do |cell|
+            td_{ cell }
+          end
+        }
+      end
+    }
+
+  in a controller
+
+    def ajax_responder
+      text =
+        tagz{
+          table_{ 
+            rows.each do |row|
+              tr_{
+                row.each do |cell|
+                  td_{ cell }
+                end
+              }
+            end
+          }
+        }
+
+      render :text => text
+    end
+
+INSTALL
+
+  gem install tagz
+
+URIS
+
+  http://github.com/ahoward/tagz/tree/master
+  http://rubyforge.org/projects/codeforpeople
+
+HISTORY
+  7.2.0
+    - ruby19 compat
+
+  7.0.0
+    - * IMPORTANT * NOT BACKWARD COMPATIBLE (thus version bump)
+    the tagz functionality itself has not changed, but the defaults for
+    excaping have!  now tagz will escape attributes, but NOT content, in the
+    default mode.  you can easily configure something else with
+
+      Tagz.escape!(:content => true, :attributes => true)
+
+    which would be like saying
+
+      Tagz.xml_mode!
+
+    or
+
+      Tagz.escape!(:content => false, :attributes => true)
+
+    which would be like saying
+
+      Tagz.html_mode!
+
+    to repeat, the default is 'Tagz.html_mode!'
+
+  6.0.0 
+    - reorganize lib to avoid dumping a few constants into the includee - aka
+    don't absolutely minimize namespace pollution. there is now reason to
+    thing this version shouldn't be backwards compat - i bumped the version
+    just in case
+
+  5.1.0
+    - attribute/content auto-escaping can be turned off with
+
+        Tagz.i_know_what_the_hell_i_am_doing!
+
+      and turned back on with
+
+        Tagz.i_do_not_know_what_the_hell_i_am_doing!
+
+      attribute and content escaping can be configured individually too. see
+      tests for examples
+
+
+      thanks Dan Fitzpatrick
+
+    - << and concat escape (if configured) while puts and push and write do not
+
+      thanks JoelVanderWerf
+
+  5.0.0
+    - introduce better escaping for attributes using xchar.rb approach
+    - indroduce smart escaping for content
+    - make Tagz.globally kick ass more hard
+    - note that this version is not backward compatibile if you were relying
+      on tagz never escaping any content should be an ok upgrade for most
+      applications
+
+  4.6.0
+    - fix a bug with self closing tagz that had crept in 1.0.0 -> 4.2.0.  thx
+      jeremy hinegardner
+
+    - added tests from 1.0.0 back into svn
+
+  4.4.0
+    - remove dependancy on cgi lib, tagz is now completely standalone
+
+  4.3.0
+    - detect rails and auto-include into ActionController::Base and include
+      globally into ActionView::Base
+
+  4.2.0
+    - general lib cleanup
+    - introduction of dual-mixin technique (Tagz.globally)
+    - few small bug fixes
+    - ninja tales
+
+SAMPLES
+
+  <%= @samples %>

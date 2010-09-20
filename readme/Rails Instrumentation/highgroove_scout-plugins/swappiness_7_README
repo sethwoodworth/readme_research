@@ -1,0 +1,15 @@
+Swappiness Plugin
+======================
+Created by [Eric Lindvall](http://twitter.com/lindvall)
+
+Overview
+------------
+
+Reports on various SWAP-related memory metrics, generating alerts if Swap-Ins and/or Swap-Outs increase significantly.
+
+Dependencies
+------------
+
+Requires `vmstat` (read by the plugin via `/proc/vmstat`).
+
+

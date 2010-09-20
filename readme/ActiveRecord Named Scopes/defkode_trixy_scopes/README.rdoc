@@ -1,0 +1,35 @@
+== TrixyScopes
+
+Collection of useful named scopes for ActiveRecord
+
+
+== Installation
+
+
+  sudo gem install trixy_scopes
+
+
+== Environment
+  
+  config.gem "trixy_scopes", :source => "http://gemcutter.org"
+
+
+include TrixyScopes module into your ActiveRecord model:
+
+
+  class Product < ActiveRecord::Base
+  
+    include TrixyScopes
+    
+    (...)
+    
+  end
+
+== Usage
+
+http://wiki.github.com/defkode/trixy_scopes
+
+
+== Copyright
+
+Copyright (c) 2009 Tomasz Mazur, released under the MIT license

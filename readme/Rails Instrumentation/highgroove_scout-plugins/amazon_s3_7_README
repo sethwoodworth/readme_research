@@ -1,0 +1,26 @@
+Amazon S3 Plugin
+==================================
+
+Created by [Koordinates](http://koordinates.com)
+
+Reports on Amazon S3 usage for a particular set of buckets.
+
+You want to increase your reporting interval to something >0 so the AWS 
+reporting service doesn't get hammered with no real reason (data is hourly).
+
+Dependencies
+------------
+
+  Python! Ha. Take that!
+
+  You need to put check_aws_usage.py somewhere on your system, and specify
+  the path in the `script_path` option. 
+  
+  It requires [Mechanize](http://wwwsearch.sourceforge.net/mechanize/), 
+  which is packaged in Debian/Ubuntu (python-mechanize) or installable
+  via `easy_install mechanize` elsewhere.
+
+Compatibility
+-------------
+
+Tested on Linux

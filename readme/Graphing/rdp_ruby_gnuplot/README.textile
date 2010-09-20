@@ -1,0 +1,234 @@
+h1.  Ruby Gnuplot - How To 
+
+p=. 
+      ["Rubyforge Project
+	page":http://rubyforge.org/projects/rgplot]
+      ["ChangeLog":ChangeLog]
+      ["Authors":AUTHORS.txt]
+      ["License":LICENSE.txt]
+    
+h2.  History and Background 
+
+      Gnuplot is a program that has a rich language for the generation of
+      plots.  It has a unique place in academia as it was one of the first
+      freely available programs for plot generation.  I started using gnuplot
+      over 10 years ago while pursuing my Master's degree in Physics and have
+      been using it actively ever since.
+    
+h3. Version 0.9 
+
+bq. 
+      My first attempt at a Ruby interface to gnuplot was an object interface
+      encapsulating gnuplot language. This was taken directly from the Python
+      gnuplot interface. In spite of my being very familiar with Gnuplot and
+      Ruby and being the author of the RGnuplot package, I found it
+      non-intuitive to use the RGnuplot package.  I found myself constantly
+      looking at the code to figure out what I needed to do.
+      This was not sufficient and did not sit well.
+    
+h3. Version 1.0
+
+bq. 
+      The second attempt at a Ruby interface was to do absolutely nothing but
+      use Ruby's built in string manipulation methods.  This meant that I
+      could simply use my knowledge of Gnuplot without having to worry about
+      objects.
+      While in some ways an improvement over Version 0.9, it still did not sit
+      well with me.
+    
+h3.  Version 2.0 
+
+bq. 
+      After attending RubyConf 2004 I was inspired by Rich Kilmer's use of
+      Ruby to implement domain specific languages.  That is the current
+      implementation of Gnuplot and quite probably the one that I'll stick
+      with for some time.  This version combines the direct mapping of the
+      gnuplot language without wrapping with the ruby syntax and mechanism of
+      adding methods to existing classes to interface Ruby objects with
+      gnuplot.
+    
+h2. Setup 
+
+h3. Version 2.2
+
+    If the 'gnuplot' command is in your path then there is no required
+    setup. If the gnuplot executable for your system is called something other
+    than simply 'gnuplot' then set the RB_GNUPLOT environment variable to the
+    name of the executable.  This must either be a full path to the gnuplot
+    command or an executable filename that exists in your PATH environment
+    variable.
+    
+h2.  Ruby Gnuplot Concepts 
+
+      Gnuplot has a very simple conceptual model.  Calls to _Set_ are
+      made to set parameters and either _Plot_ or _Splot_ is
+      called to generate the actual plot.  The _dataset_ to be 
+      plotted can be specified in a number of ways, contained in a seperate
+      file, generated from a function, read from standard input, or read
+      immediately after the plot command.
+    
+
+      The object model for the Ruby gnuplot wrapper directly mimics this
+      layout and flow.  The following are the standard steps for generating a
+      plot:
+    
+    
+p.  Instantiate a Plot or Splot object and set parameters by gnuplot variable name. 
+p. Instantiate DataSet objects and attach Ruby objects containing
+	  the data to be plotted to the DataSet. Attach properties that modify
+	  the plot command using the modifier name.
+      
+p. Send the Plot/Splot object to a Gnuplot instance for
+	  plotting.  
+
+      The Version 2.0 interface makes very heavy use of blocks leading to very
+      readable code.
+    
+Gnuplot.open 
+
+bq. 
+      Instantiates a new Gnuplot process.  The path to the executable is
+      determined on a Unix or MacOSX system using the which command.  Windows
+      users, I have no idea what to do.
+      If a block is given to the function the opened process is passed into
+      the block.  This mimics the most common usage of the File.open method.
+    
+Plot.new 
+
+SPlot.new
+ 
+bq. 
+      Create a new Plot or Splot object.  DataSets are attached to the object
+      to specify the data and its properties. 
+      If a block is given to the function, the plot object is passed into the
+      block.
+    
+DataSet.new
+
+bq. 
+      Associates a Ruby object containing the data to plot with the properties
+      that will be passed to the plot command for that dataset.  Any Ruby
+      object can be associated with a DataSet as long as it understands the
+      to_gplot method.
+    
+ to_gplot 
+ 
+bq. 
+      Within Gnuplot, plot data is read in very simple formats.  The
+      to_gplot method is expected to write the data of the object in a format
+      that is understandable by Gnuplot.  One of the many great things about
+      Ruby is that methods can be added after the original declaration.  The
+      gnuplot module defines the to_gplot method on the following classes:
+      Array, String, and Matrix.
+      Simply define a to_gplot method on your own class to tie the class into
+      gnuplot.
+    
+h2.  Examples 
+
+h3.  Simple sin wave 
+
+bq. The following example simply plots the value of sin(x) between the
+      ranges of -10 and 10.  A few points to notice:
+    
+    
+p.  The code uses nested blocks to construct the plot.  The newly
+	  created object is passed to the block so it can be modified in
+	  place.
+	
+      
+p.  Each of the gnuplot plot variables are modified using the 
+	  variable name as a method name on the plot object or on the dataset
+	  object.  The wrapper also takes care of the single quoting that is
+	  required on some of the variables like title, ylabel, and xlabel.
+	
+      
+p.  The plot object simply has an array of DataSets.  The
+	  constructor initializes this empty array before yielding to the
+	  block.  This method uses the << operator to add the DataSet to
+	  the plot.
+	
+      
+p.  When the plot block ends, if an IO object is given to the Plot
+	  constructor, the plot commands will be written to the IO object.
+	  Any object can be passed to the constructor as long as it
+	  understands the << operator.
+	  
+<pre><code>
+Gnuplot.open do |gp|
+  Gnuplot::Plot.new( gp ) do |plot|
+  
+    plot.xrange "[-10:10]"
+    plot.title  "Sin Wave Example"
+    plot.ylabel "x"
+    plot.xlabel "sin(x)"
+    
+    plot.data << Gnuplot::DataSet.new( "sin(x)" ) do |ds|
+      ds.with = "lines"
+      ds.linewidth = 4
+    end
+    
+  end
+  
+end
+
+Plotting discrete points
+
+Array data can be plotted quite easily since Arrays have a defined to_gplot method.
+
+Simply pass an array of data to the constructor of the DataSet object or set the data property of the DataSet. In this example, because there are two arrays, each array will be a single column of data to the gnuplot process.
+
+Gnuplot.open do |gp|
+  Gnuplot::Plot.new( gp ) do |plot|
+  
+    plot.title  "Array Plot Example"
+    plot.ylabel "x"
+    plot.xlabel "x^2"
+    
+    x = (0..50).collect { |v| v.to_f }
+    y = x.collect { |v| v ** 2 }
+
+    plot.data << Gnuplot::DataSet.new( [x, y] ) do |ds|
+      ds.with = "linespoints"
+      ds.notitle
+    end
+  end
+end
+    
+Multiple Data Sets
+
+As many data sets as are desired can be attached to a plot. Each of these can have their own plot modifiers. Notice in this example how the data array is explicitly set instead of using the << operator.
+
+Also in this example, the commands are not written to the Gnuplot process but are instead written to a File called gnuplot.dat. This file can later be run directly by a gnuplot process as it contains only the gnuplot commands.
+
+File.open( "gnuplot.dat", "w") do |gp|
+  Gnuplot::Plot.new( gp ) do |plot|
+  
+    plot.xrange "[-10:10]"
+    plot.title  "Sin Wave Example"
+    plot.ylabel "x"
+    plot.xlabel "sin(x)"
+    
+    x = (0..50).collect { |v| v.to_f }
+    y = x.collect { |v| v ** 2 }
+
+    plot.data = [
+      Gnuplot::DataSet.new( "sin(x)" ) { |ds|
+        ds.with = "lines"
+        ds.title = "String function"
+    	  ds.linewidth = 4
+      },
+    
+      Gnuplot::DataSet.new( [x, y] ) { |ds|
+        ds.with = "linespoints"
+        ds.title = "Array data"
+      }
+    ]
+
+  end
+  
+end
+    
+
+You can also add atribtrary lines to the output 
+
+plot.arbitrary_lines << "set ylabel \"y label" font \"Helvetica,20\""

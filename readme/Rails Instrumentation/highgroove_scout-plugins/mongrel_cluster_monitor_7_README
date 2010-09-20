@@ -1,0 +1,37 @@
+Mongrel Cluster Monitor
+======================
+Created by 
+ * Adam Parrott [Plexus Web Creations](http://www.plexusweb.com/)
+ * [Highgroove Studios LLC](http://www.highgroove.com)
+
+Summary
+------------
+
+This plugin will monitor a directory of mongrel_cluster configuration files and attempt to run the "status" command using:
+
+mongrel_rails cluster::status -C application.yml
+
+If it finds a down mongrel (a search for the word "missing"), it will send an Alert.  On the subsequent run, if the mongrel is still down, it will attempt a "start" using:
+
+mongrel_rails cluster::start -C application.yml
+
+On the next subsequent run, if the mongrel is still down, it will continue to send Alerts, and repeat the process.
+
+Dependencies
+------------
+
+Requires mongrel and mongrel_cluster [mongrel](http://mongrel.rubyforge.org/):
+
+	sudo gem install mongrel mongrel_cluster
+	
+Options
+-------
+
+Mongrel Configuration Directory.  This is usually /etc/mongrel_cluster, the path that stores application .yml files for mongrel's cluster startup options.
+
+Compatibility 
+-------------
+
+Works on Linux and OSX.
+
+

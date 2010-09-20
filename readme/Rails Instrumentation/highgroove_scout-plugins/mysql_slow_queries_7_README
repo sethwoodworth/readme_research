@@ -1,0 +1,11 @@
+Monitors for slow MySQL queries and generates an alert (containing the queries) whey they occur.
+
+The plugin has two options, the path to your MySQL slow queries log and the threshold for a very slow query.
+
+You must enable the [MySQL slow queries log](http://dev.mysql.com/doc/refman/5.0/en/slow-query-log.html) in your my.cnf file.
+
+This can be done with the following 2 lines:
+
+set-variable=long_query_time=2
+log-slow-queries=/var/log/mysql/mysql-slow.log
+

@@ -1,0 +1,59 @@
+= Bdoc
+
+* http://github.com/manalang/bdoc
+
+== DESCRIPTION:
+
+Bdoc is a simple replacement for gem server.  All it does is look at all of
+the Gems you have installed locally and creates a nice iframe based
+browser that makes it easy to navigate between gem docs. IT DOES NOT REQUIRE
+A SERVER FOR VIEWING... not like gem server does!
+
+If you use this, I highly suggest also using 
+Hanna[http://github.com/mislav/hanna/tree/master] (a beautiful rdoc theme).
+
+Check out the demo http://manalang.github.com/bdoc
+
+http://img.skitch.com/20090406-8bhnftitwtrpd5xeu4acexerm6.png
+
+== Install
+
+  [sudo] gem install manalang-bdoc
+
+== Usage
+
+  bdoc
+
+That's it!  This will create an index of all your local gems then launch your 
+default browser.  Enjoy!
+
+=== Specify output directory
+
+Optionally you can specify the output directory on the command line:
+
+  bdoc /path/to/bdoc
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2009 Rich Manalang
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

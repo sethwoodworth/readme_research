@@ -1,0 +1,138 @@
+= Google Static Maps Helper
+
+This gem provides a simple interface to the Google Static Maps V2 API (http://code.google.com/apis/maps/documentation/staticmaps/)
+
+
+= Installation
+  [sudo] gem install google_static_maps_helper
+
+
+= The easiest way to generating a Google Static Maps URL
+
+  GoogleStaticMapsHelper.url_for do
+    marker :lng => 1, :lat => 2
+    marker :lng => 3, :lat => 4
+  end
+
+This will return the URL for a map with these markers. Please note that if you do use this approach you have to set size and sensor setting.
+You do this by:
+  GoogleStaticMapsHelper.size = '300x600'
+  GoogleStaticMapsHelper.sensor = false
+
+If you are on Rails (2.3.x) you can put it in your environment configuration file and while you are there you can add the following line inside the configuration block:
+  Rails::Initializer.run do |config|
+    config.gem 'google_static_maps_helper'
+    ...
+  end
+
+It is also possible to create paths:
+
+  point1 = {:lng => 1, :lat => 2}
+  point2 = {:lng => 3, :lat => 4}
+
+  GoogleStaticMapsHelper.url_for do
+    path point1, point2, :color => :red, :weight => 7
+  end
+
+..and of course you can add paths and markers in the same map.
+
+
+= A bit more "low-level" approach instantiating objects yourself
+
+If you need a more flexibility you can create objects yourself. Read on to get a quick introduction of the classes in this library. 
+
+== Marker
+A marker object is, not surprisingly, representing a marker in the Google static map. It is pushed on to the Map object and used
+to generate the URL for the static map. Markers which are of the same "type" (same color, label and size) are grouped together in the generated URL
+so that we obey the schema of URL which Google has defined as "markers=markerStyles|markerLocation1|markerLocation2|... etc.".
+
+=== How to build a Marker?
+You uild a marker by simply sending in an object which responds to lng and lat, or by sending a Hash which has lng and lat keys.
+  marker = GoogleStaticMapsHelper::Marker.new(location)
+  marker = GoogleStaticMapsHelper::Marker.new(:lng => 1, :lat => 2)
+
+Google's static maps supports some options on markers. You can change the color, the label and the size or you can send in your own icon.
+(http://code.google.com/apis/maps/documentation/staticmaps/#MarkerStyles). You send in options as a second
+parameter to the new method if you gave a location object, or include it in the hash where lng and lat is.
+  marker = GoogleStaticMapsHelper::Marker.new(location, :color => 'blue')
+  marker = GoogleStaticMapsHelper::Marker.new(:lng => 1, :lat => 2, :color => 'blue')
+  marker = GoogleStaticMapsHelper::Marker.new(:lng => 1, :lat => 2, :icon => 'http://www.domain.com/icon.png')
+
+
+== Map
+A Map holds many markers, paths, pluss some additional options like the size of the static map, what zoom level and center point it should be fixed to
+etc. If no zoom or center point is give it will calculate the map view based on the markers or paths. You can leave markers and paths out, but then you have to supply
+zoom and center. More info can be found here: http://code.google.com/apis/maps/documentation/staticmaps/#URL_Parameters.
+
+=== How to build a map?
+When building a map object you have to supply sensor and size. Other options are optional.
+  map = GoogleStaticMapsHelper::Map.new(:sensor => false, :size => '200x300')
+
+Or, if you have set default options on GoogleStaticMapsHelper, you can skip the required keys when creating a map
+  GoogleStaticMapsHelper.size = '300x600'
+  GoogleStaticMapsHelper.sensor = false
+  map = GoogleStaticMapsHelper::Map.new
+
+
+== Generate static map URL
+With the map object made, we are ready to add some markers to it:
+  map << marker
+  map << another_marker << yet_another_marker << and_one_more_marker
+
+We can now ask the map for it's URL to where we'll get the map from. This URL can be used as source attribute on an image tag.
+  map.url
+
+Another thing you might want to do is to override the center point and zoom level. This is done during map construction
+  map = GoogleStaticMapsHelper::Map.new(:sensor => false,
+                                        :size => '200x300',
+                                        :center => '1,2',
+                                        :zoom => 4)
+
+
+
+== Paths and Polygons
+It is also possible to create Paths and Polygons and to use them together with markers.
+Paths and Polygons will by default encode it's points with Google's encoding algorithm.
+
+To create a Path you need two Points and a Path object:
+  path = GoogleStaticMapsHelper::Path.new
+  start_point = {:lat => 1, :lng => 2} # You can also use any object which responds to lat and lng here
+  end_point = {:lat => 1, :lng => 2}
+  path << start_point << end_point
+  map << path
+  map.url
+
+To create a polygon you need one more point, and to set the fillcolor of the path to a valid color. Setting the fill
+color is what will trigger the creation of polygons for the static map API.
+  path = GoogleStaticMapsHelper::Path.new(:fillcolor => :red, :weight => 3, :color => :blue)
+  path << point1 << point2 << point3
+  map << path
+  map.url
+
+If you feel like it, you can add points at construction time:
+  GoogleStaticMapsHelper::Path.new(:color => :red, :points => [point1, point2])
+  # ..or
+  GoogleStaticMapsHelper::Path.new(point1, point2, :color => :red)
+
+
+== Locations
+The location class is what we wrap all our lat- and lng values in. Either it is a Marker, or points for a Path; it will store it's lng and lat value
+in a Location object. Location objects have a few helper methods which you can use to calculate distance between 
+locations (<tt>distance_to(another_location)</tt>) and use to generate new locations based on distance and heading from current location (<tt>endpoint(distance, heading)</tt>).
+It also have a helper method called <tt>endpoints_for_circle_with_radius</tt> which returns locations that makes up a circle around the receiving location. Some examples:
+
+  # Create a marker object, which it's lng and lat are stored under the hood as a location object.
+  # Methods which the marker itself cannot answer, like lat and lng and distance_to is delegated to the location object
+  marker = GoogleStaticMapsHelper::Marker(:lng => 1, :lat => 2)
+
+  map << marker
+
+  # Lets say we want draw a circle around our marker, with a radius of 1 kilometer.
+  path = GoogleStaticMapsHelper::Path.new(:fillcolor => :blue, :points => marker.endpoints_for_circle_with_radius(1000))
+  
+  map << path
+
+
+== Copyright
+
+Copyright (c) 2009 Thorbjørn Hermansen. See LICENSE for details.

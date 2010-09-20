@@ -1,0 +1,40 @@
+= MegaMenus
+
+== DESCRIPTION:
+
+This gem makes working with menu structures in Rails easier. 
+
+== FEATURES/PROBLEMS:
+The current version creates:
+* a controller for editing the menu
+  * views associated to methods written in rjs
+  * a partial for rendering the menu(for example to be rendered from a menu)
+  * a helper to configure its working in normal mode and edit mode, selection of menu depths(levels) to be shown 
+  * the builtin functions are (add, delete, edit, move up, move down)
+* a model for storing the menu with fields absolute_position and depth to improve performance when the menu is in normal mode
+* a generator for rails to ease the developers work for using this gem, the menu generator creates a template menu structure that the developer can customize.
+* uses session[:menu_id] to identify the selected menu
+* possibility to render different menu depths in different places
+* added a publish button in order to hide or set visible menus (publish model field)
+
+
+== STATUS
+* Currently writing tests to ensure proper working for future versions.
+
+
+== REQUIREMENTS:
+* Rails 2.2 
+
+== NOTES:
+* You can have multiple partials rendering different parts of the menu. Include in your partial the following line:
+  - <% mega_menus(name_of_the_menu_model, 'name_of_the_menu_controller', par, arr, parent_id) %>
+  - where par is the either TRUE(editor mode) or FALSE(normal mode), arr is an array containing the interval of depths to be shown(2..3 means display menus with depths 2 and 3), parent_id determines to which parent are this children related to( 5 would mean show only children whoose ancestor has id parent_id)
+* If you have multiple partials you should edit the rjs files in order to assure proper updating of each partial. By default only the generated partial is updated.
+
+* The menu is  located in <ul id="ul_menu_#{m.depth}" class="ul_menu_depth_#{m.depth}">
+* The selected menu is located in <li class="li_menu_class_selected">
+* This two id and class values can be easly changed by editing the mega_menu partial and its helper.
+
+== INSTALL:
+* script/generate menu menu_name
+

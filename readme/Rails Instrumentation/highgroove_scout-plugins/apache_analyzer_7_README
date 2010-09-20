@@ -1,0 +1,39 @@
+Apache Log Analyzer Plugin
+======================
+Created by [Scout](http://scoutapp.com)
+
+Overview
+------------
+
+Provides statistics from an Apache access log: request distribution by hour, most popular URIs, traffic sorted by sum, and traffic sorted by mean. Just install this plugin in Scout and provide the full path to the Apache access log file. The plugin uses the [Request Log Analyzer gem](http://github.com/wvanbergen/request-log-analyzer/tree/master) to generate reports on Apache log every 24 hours. When first installed, it will generate the report immediately.
+
+Note that the Apache Log Analyzer may take a couple of minutes to run on large log files.
+
+Where to find your Apache access log
+------------
+The location of your Apache log file depends on your Apache configuration. In Ubuntu, the access log defaults to `/var/log/httpd/access_log`. Typically, you will configure a separate access log for each virtual host. Check in your virtual host config for a CustomLog directive.
+
+Advanced: Specifying an Apache log format
+------------
+If you're not sure what your Apache log format is, it's probably the default [Common Log Format (CLF)](http://httpd.apache.org/docs/2.2/logs.html#accesslog) -- in which case you can safely skip this section.
+
+By default, this plugin expects the Common Log Format. If you have specified a different format in your Apache configuration, you'll need to tell this plugin what format you're using. A format string looks something like `%h %l %u %t "%r" %>s %b`. Again, if you're not sure, just let the plugin run with the default settings.
+
+
+Dependencies
+------------
+
+Requires:
+
+[elif gem](http://elif.rubyforge.org/):
+
+sudo gem install elif
+
+[request-log-analyzer gem](http://github.com/wvanbergen/request-log-analyzer/tree/master)
+
+sudo gem install request-log-analyzer
+
+Compatibility
+-------------
+
+Tested on Linux, OSX, and Solaris. Requires the Scout Agent version 4.0 or greater.

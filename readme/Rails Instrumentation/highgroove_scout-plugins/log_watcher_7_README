@@ -1,0 +1,10 @@
+Log Watcher Plugin
+=================================
+Created by [Yaroslav Lazor](http://github.com/yaroslavlazor)
+
+Tail the difference(from the last run) of the log file and returns the number of occurrences of a given term (ex: Error).
+
+
+Compatibility 
+-------------
+Requires the tail, grep, and wc commands.

@@ -1,0 +1,7 @@
+= Painless Page and Fragment Caching (padrino-cache)
+
+Not implemented yet.
+
+== Copyright
+
+Copyright (c) 2010 Padrino. See LICENSE for details.

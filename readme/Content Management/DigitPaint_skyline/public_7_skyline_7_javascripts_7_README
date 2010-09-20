@@ -1,0 +1,5 @@
+== Skyline Javscripts
+
+During development the SprocketsMiddleware will regenerate application.js and skyline.js on every request. 
+
+In production they will be rendered once and then cached.

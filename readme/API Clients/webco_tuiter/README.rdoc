@@ -1,0 +1,81 @@
+= Tuiter
+
+Tuiter was design and developed by {Manoel Lemos}[http://manoellemos.com] to
+provide access to the Twitter API. It was developed for the experimental
+project called {Tuitersfera Brasil}[http://tuitersfera.com.br], an application
+to monitor the Twitter usage in Brazil.
+
+Both Tuiter and Tuitersfera were adopted, further developed and maintained by
+{Webco Internet}[http://webcointernet.com].
+
+== Instalation
+
+Tuiter is avaliable as a gem on 
+{Rubyforge}[http://rubyforge.org/projects/tuiter/], so you can easily install
+using rubygems:
+
+    gem install tuiter
+
+Although it is recommended to use the gem published on Rubyforge, tuiter is also
+avaliable at Github. This might be useful if you want to experiment with forks
+or live on the bleeding edge. 
+
+To install the Github version, simply run on a console:
+
+    gem install webco-tuiter --source=http://gems.github.com
+
+If you already have Github gem repository on you gem source, you can leave the
+source part out.
+
+== Basic Usage
+
+    require 'tuiter'
+    client = Tuiter::Client.new(:username => '<twitter_login>', :password => '<twitter_pwd>')
+    
+    client.update('Hey Ho, Twitters!')
+
+There are (or at least we want to add :-) another examples in the examples/ 
+folder.
+
+== Using OAuth
+
+	require 'tuiter'
+	client = Tuiter::Client.new(:authentication => :oauth, :consumer_key => 'YOUR_KEY', :consumer_secret => 'YOUR_SECRET')
+
+	# request token from Twitter
+	rtoken = client.request_token
+	# waits for token
+	# stores token and secret
+	token, secret = rtoken.token, rtoken.secret   # you could store this on session, db, etc
+	
+	# redirect to authorize url
+	rtoken.authorize_url
+	# user authenticate in twitter domains
+	
+	# the code below goes in the callback accessed by Twitter
+	access_token = client.authorize(token,secret)
+	# checks if everything's ok
+	if client.authorized?
+	  # have fun
+	  15.times do
+	    client.update('All work and no play makes Jack a dull boy')
+	  end
+	end
+	
+If you already have the token and secret of the user (from database, for example), you just have to do the following to authenticate them:
+
+	client = Tuiter::Client.new(:authentication => :oauth, :consumer_key => 'YOUR_KEY', :consumer_secret => 'YOUR_SECRET', :token => token, :secret => secret)
+	if client.authorized?
+	  # have fun
+	  15.times do
+	    client.update('All work and no play makes Jack a dull boy')
+	  end
+	end
+
+Register your Twitter client at http://twitter.com/oauth_clients
+
+== Roadmap and TO-DO list
+
+Check out the library roadmap and to-do list
+{in the project wiki}[http://wiki.github.com/webco/tuiter]
+

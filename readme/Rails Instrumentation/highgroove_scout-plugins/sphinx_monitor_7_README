@@ -1,0 +1,13 @@
+Monitors Sphinx, an open-source SQL full-text search engine (http://www.sphinxsearch.com/) for the following metrics by looking at the searchd logs:
+
+* Queries per-minute
+* Average query time 
+* Average time per rebuild
+* Index rebuilds
+* Average results returned
+
+Note that the first run will not return any data.
+
+----
+
+Created by Sam Sinensky (http://github.com/samsinensky) at Code and Beats (http://codeandbeats.com/) 12/29/09

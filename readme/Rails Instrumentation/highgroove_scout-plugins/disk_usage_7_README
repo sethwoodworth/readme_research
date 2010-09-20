@@ -1,0 +1,7 @@
+
+
+How to test:
+
+scout test /path/to/disk_usage.rb -v -l debug '{"command"=>"cat /path/to/test_disk_usage_output_normal.txt"}'
+
+scout test /path/to/disk_usage.rb -v -l debug '{"command"=>"cat /path/to/test_disk_usage_output_multiline.txt"}'
